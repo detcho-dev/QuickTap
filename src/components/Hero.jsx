@@ -31,7 +31,14 @@ export function Hero() {
             </h1>
 
             <p className="max-w-lg text-base text-muted-foreground sm:text-lg">
-              {t("hero.subtitle")}
+              QuickTap is a premium <strong>NFC card</strong> that lets you
+              share your contact information, social media, and links with a
+              single tap on any modern smartphone. No app required. Order yours
+              in Egypt at
+              <a href="https://quicktap-tags.vercel.app" className="text-brand">
+                quicktap-tags.vercel.app
+              </a>
+              .
             </p>
 
             <div className="flex flex-wrap gap-3">

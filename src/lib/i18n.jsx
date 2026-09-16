@@ -62,7 +62,35 @@ const dict = {
     "order.error": "Something went wrong. Try again or contact us on WhatsApp.",
     "order.required": "This field is required",
     "order.select.empty": "No results",
-
+    "faq.title": "Frequently asked questions",
+    "faq.subtitle": "Everything you need to know about QuickTap",
+    "faq.q1.q": "What is an NFC card?",
+    "faq.q1.a":
+      "An NFC card is a smart card that uses Near Field Communication technology to share digital information (like your contact details or social links) with any NFC-enabled smartphone by simply tapping it.",
+    "faq.q2.q": "How does QuickTap work?",
+    "faq.q2.a":
+      "Order your QuickTap card, tap it on any NFC-enabled phone, and your digital profile opens instantly in the browser. No app needed.",
+    "faq.q3.q": "Do I need an app to use QuickTap?",
+    "faq.q3.a":
+      "No. QuickTap works natively with any modern smartphone that supports NFC. Just tap the card and the profile opens in the browser.",
+    "faq.q4.q": "Can I update my links after getting the card?",
+    "faq.q4.a":
+      "Yes. You can update your profile and links anytime through your QuickTap dashboard without changing the physical card.",
+    "faq.q5.q": "Where can I buy QuickTap NFC cards in Egypt?",
+    "faq.q5.a":
+      "You can order directly from our website at quicktaptags.com. We deliver across Egypt within 3–5 business days.",
+    "about.title": "About QuickTap",
+    "about.subtitle": "Egyptian NFC innovation",
+    "about.p1":
+      "QuickTap is an Egyptian company founded in 2024 that specializes in smart NFC products. Our mission is to eliminate paper business cards and replace them with fast, eco-friendly, and updatable digital alternatives.",
+    "about.p2":
+      "All our cards are designed, manufactured, and shipped from Cairo, Egypt. We serve entrepreneurs, sales professionals, hotels, and event organizers across the country.",
+    "about.p3":
+      "Our products are compatible with all modern NFC-enabled smartphones from Apple, Samsung, Google, Huawei, and Xiaomi.",
+    "about.stat.customers": "Happy customers",
+    "about.stat.founded": "Founded",
+    "about.stat.rating": "Rating",
+    "about.stat.delivery": "Days delivery",
     // Footer
     "footer.rights": "© 2025 QuickTap — All rights reserved",
   },
@@ -127,6 +155,18 @@ const dict = {
     "order.error": "حصل خطأ، حاول تاني أو تواصل معانا على واتساب.",
     "order.required": "الحقل ده مطلوب",
     "order.select.empty": "لا توجد نتائج",
+    "about.title": "عن QuickTap",
+    "about.subtitle": "ابتكار مصري في عالم NFC",
+    "about.p1":
+      "QuickTap شركة مصرية اتأسست في 2024، متخصصة في منتجات الـ NFC الذكية. مهمتنا إننا نلغي كروت البيزنس الورقية ونستبدلها ببدائل رقمية سريعة وصديقة للبيئة وقابلة للتحديث.",
+    "about.p2":
+      "كل بطاقاتنا بتتصمم وتتصنع وتتبعت من القاهرة. بنخدم رواد الأعمال، مندوبين المبيعات، الفنادق، ومنظمي الفعاليات في كل مصر.",
+    "about.p3":
+      "منتجاتنا متوافقة مع كل الموبايلات الحديثة اللي بتدعم NFC من Apple و Samsung و Google و Huawei و Xiaomi.",
+    "about.stat.customers": "عميل سعيد",
+    "about.stat.founded": "سنة التأسيس",
+    "about.stat.rating": "التقييم",
+    "about.stat.delivery": "أيام التوصيل",
 
     // Footer
     "footer.rights": "© 2025 QuickTap — جميع الحقوق محفوظة",
