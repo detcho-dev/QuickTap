@@ -1,11 +1,4 @@
-import {
-  Instagram,
-  MessageCircle,
-  Mail,
-  Facebook,
-  Twitter,
-  Music2,
-} from "lucide-react";
+import { Instagram, MessageCircle, Mail } from "lucide-react";
 
 export const SOCIAL_LINKS = [
   {
