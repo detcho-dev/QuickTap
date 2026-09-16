@@ -75,10 +75,10 @@ const dict = {
       "No. QuickTap works natively with any modern smartphone that supports NFC. Just tap the card and the profile opens in the browser.",
     "faq.q4.q": "Can I update my links after getting the card?",
     "faq.q4.a":
-      "Yes. You can update your profile and links anytime through your QuickTap dashboard without changing the physical card.",
+      "Yes. You can update your profile and links anytime through Contacting us without changing the physical card.",
     "faq.q5.q": "Where can I buy QuickTap NFC cards in Egypt?",
     "faq.q5.a":
-      "You can order directly from our website at quicktaptags.com. We deliver across Egypt within 3–5 business days.",
+      "You can order directly from our website at quicktap-tags.vercel.app . We deliver across Cairo and Giza within 3-5 business days.",
     "about.title": "About QuickTap",
     "about.subtitle": "Egyptian NFC innovation",
     "about.p1":
