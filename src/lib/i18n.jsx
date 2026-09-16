@@ -91,8 +91,11 @@ const dict = {
     "about.stat.founded": "Founded",
     "about.stat.rating": "Rating",
     "about.stat.delivery": "Days delivery",
+    "social.instagram": "Instagram",
+    "social.whatsapp": "WhatsApp",
+    "social.email": "Email",
     // Footer
-    "footer.rights": "© 2025 QuickTap — All rights reserved",
+    "footer.rights": "© 2026 QuickTap — All rights reserved",
   },
 
   ar: {
@@ -167,9 +170,12 @@ const dict = {
     "about.stat.founded": "سنة التأسيس",
     "about.stat.rating": "التقييم",
     "about.stat.delivery": "أيام التوصيل",
+    "social.instagram": "إنستجرام",
+    "social.whatsapp": "واتساب",
+    "social.email": "الإيميل",
 
     // Footer
-    "footer.rights": "© 2025 QuickTap — جميع الحقوق محفوظة",
+    "footer.rights": "© 2026 QuickTap — جميع الحقوق محفوظة",
   },
 };
 

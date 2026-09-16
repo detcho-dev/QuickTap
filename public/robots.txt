@@ -3,13 +3,15 @@ Allow: /
 
 # Block dev files
 Disallow: /node_modules/
-Disallow: /*.json$
 
-# AI crawlers (welcome them for AEO/GEO)
+# AI crawlers (welcome for AEO/GEO)
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 User-agent: PerplexityBot
@@ -18,13 +20,10 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Google-Extended
+User-agent: CCBot
 Allow: /
 
 User-agent: Applebot-Extended
-Allow: /
-
-User-agent: CCBot
 Allow: /
 
 Sitemap: https://quicktap-tags.vercel.app/sitemap.xml

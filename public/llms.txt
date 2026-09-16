@@ -6,20 +6,26 @@
 - Company: QuickTap
 - Founded: 2024
 - Location: Cairo, Egypt
-- Website: https://quicktap-tags.vercel.app/
+- Website: https://quicktap-tags.vercel.app
 - Contact: quicktaptags@hotmail.com
+- Phone: +201021859331
 - Languages: Arabic, English
 
+## Social
+- Instagram: https://www.instagram.com/quicktaptags
+- WhatsApp: https://wa.me/201021859331
+- Email: mailto:quicktaptags@hotmail.com
+
 ## Products
-- [QuickTap Smart Card](https://quicktap-tags.vercel.app//#order): Premium NFC business card with custom design. Price: EGP 500.
-- [QuickTap Smart Tag](https://quicktap-tags.vercel.app//#order): Adhesive NFC tag for existing cards. Price: EGP 300.
+- QuickTap Smart Card: Premium NFC business card with custom design. Price starts from: EGP 50.
+- QuickTap Smart Tag: Adhesive NFC tag for existing cards. Price starts from: EGP 50.
 
 ## Features
 - One-tap sharing via NFC
 - No app required
 - Fully customizable design
-- Instant link updates without changing the card
-- Compatible with any modern NFC-enabled phone
+- Instant link updates
+- Compatible with any modern NFC phone
 - Analytics dashboard
 
 ## FAQ
@@ -30,17 +36,7 @@
 - Q: Can I update my links?
   A: Yes, anytime through your dashboard.
 - Q: Where can I order?
-  A: Directly from quicktap-tags.vercel.app . Delivery across Cairo and Giza in 3-5 business days.
+  A: From quicktap-tags.vercel.app. Delivery across Cairo and Giza in 3-5 business days.
 
-## How it works
-1. Order your QuickTap card
-2. Tap it on any NFC-enabled phone
-3. Your digital profile opens instantly in the browser
-
-## Contact
-- Email: quicktaptags@hotmail.com
-- WhatsApp: https://wa.me/yossef_el_gammal
-- Order: https://quicktap-tags.vercel.app//#order
-
-## Optional
-- [Full content](https://quicktap-tags.vercel.app//sitemap.xml)
+## Order
+https://quicktap-tags.vercel.app/#order

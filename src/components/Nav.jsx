@@ -1,8 +1,10 @@
-import { Nfc, MessageCircle, Languages } from "lucide-react";
+import { Link } from "@tanstack/react-router"; // لو بتستخدم TanStack
+import { Nfc, MessageCircle, Languages, Instagram } from "lucide-react";
 import { useI18n } from "../lib/i18n";
 
-export const WHATSAPP_URL = "https://wa.me/yossef_el_gammal";
+export const WHATSAPP_URL = "https://wa.me/201021859331";
 export const CONTACT_EMAIL = "quicktaptags@hotmail.com";
+export const INSTAGRAM_URL = "https://www.instagram.com/quicktaptags";
 
 export function Nav() {
   const { t, toggle } = useI18n();
@@ -19,7 +21,7 @@ export function Nav() {
           </span>
         </a>
 
-        <div className="flex items-center gap-1.5 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <a
             href="#hero"
             className="hidden rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:block"
@@ -32,23 +34,41 @@ export function Nav() {
           >
             {t("nav.order")}
           </a>
-          <button
-            type="button"
-            onClick={toggle}
-            className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-border bg-secondary px-3 py-2 text-sm font-semibold transition-colors hover:bg-accent"
+
+          {/* Instagram */}
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="me noopener noreferrer"
+            aria-label="Instagram"
+            title="Instagram"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border bg-secondary text-pink-400 transition-all hover:-translate-y-0.5 hover:border-brand/60 hover:bg-accent"
           >
-            <Languages className="h-4 w-4 text-brand" />
-            <span>{t("nav.lang")}</span>
-          </button>
+            <Instagram className="h-4 w-4" />
+          </a>
+
+          {/* WhatsApp */}
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-border bg-secondary px-3 py-2 text-sm font-semibold transition-colors hover:bg-accent"
+            aria-label="WhatsApp"
+            title="WhatsApp"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border bg-secondary text-green-400 transition-all hover:-translate-y-0.5 hover:border-brand/60 hover:bg-accent"
           >
-            <MessageCircle className="h-4 w-4 text-brand-cyan" />
-            <span className="hidden sm:inline">{t("nav.whatsapp")}</span>
+            <MessageCircle className="h-4 w-4" />
           </a>
+
+          {/* Language */}
+          <button
+            type="button"
+            onClick={toggle}
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-border bg-secondary px-2.5 py-2 text-sm font-semibold transition-colors hover:bg-accent"
+            aria-label="Toggle language"
+          >
+            <Languages className="h-4 w-4 text-brand" />
+            <span>{t("nav.lang")}</span>
+          </button>
         </div>
       </nav>
     </header>
