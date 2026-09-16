@@ -1,13 +1,73 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>QuickTap — Smart Cards & Tags</title>
+    <meta name="title" content="QuickTap — Smart Cards & Tags" />
+    <meta
+      name="description"
+      content="Premium NFC cards and tags to share your contact info, social media, and links with one tap. No app needed. Order now from QuickTap."
+    />
+    <meta
+      name="keywords"
+      content="NFC card, smart business card, NFC tag, digital business card, Egypt NFC, QuickTap"
+    />
+    <meta name="author" content="QuickTap" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://quicktap-tags.vercel.app/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://quicktap-tags.vercel.app/" />
+    <meta property="og:title" content="QuickTap — Smart NFC Cards & Tags" />
+    <meta
+      property="og:description"
+      content="Share all your links with one tap. Premium NFC cards and tags."
+    />
+    <meta
+      property="og:image"
+      content="https://quicktap-tags.vercel.app/og-image.jpg"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ar_EG" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://quicktap-tags.vercel.app/" />
+    <meta name="twitter:title" content="QuickTap — Smart NFC Cards & Tags" />
+    <meta
+      name="twitter:description"
+      content="Share all your links with one tap. Premium NFC cards and tags."
+    />
+    <meta
+      name="twitter:image"
+      content="https://quicktap-tags.vercel.app/og-image.jpg"
+    />
+
+    <link rel="icon" type="image/x-icon" href="/icon.ico" />
+    <meta name="theme-color" content="#7c6cf8" />
+
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://quicktap-tags.vercel.app/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://quicktap-tags.vercel.app/"
+    />
+
+    <!-- Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
-            "@type": "Order",
-            "@id": "https://quicktap-tags.vercel.app/#order",
+            "@type": "Organization",
+            "@id": "https://quicktap-tags.vercel.app/#organization",
             "name": "QuickTap",
             "url": "https://quicktap-tags.vercel.app/",
             "logo": {
@@ -25,22 +85,33 @@
           },
           {
             "@type": "WebSite",
-            "@id": "https://quicktap-tags.vercel.app/#hero",
+            "@id": "https://quicktap-tags.vercel.app/#website",
             "url": "https://quicktap-tags.vercel.app/",
             "name": "QuickTap",
-            "publisher": { "@id": "https://quicktap-tags.vercel.app/" },
+            "publisher": {
+              "@id": "https://quicktap-tags.vercel.app/#organization"
+            },
             "inLanguage": "en-US"
           },
           {
             "@type": "Product",
+            "@id": "https://quicktap-tags.vercel.app/#product",
             "name": "QuickTap NFC Card",
-            "description": "Premium NFC cards and tags that shares your contact info, social media, and links with one tap. No app required.",
-            "image": "https://quicktap-tags.vercel.app/#order",
+            "description": "Premium NFC cards and tags that share your contact info, social media, and links with one tap. No app required.",
+            "image": "https://quicktap-tags.vercel.app/og-image.jpg",
             "brand": { "@type": "Brand", "name": "QuickTap" },
-            "category": "Electronics > NFC Products"
+            "category": "Electronics > NFC Products",
+            "offers": {
+              "@type": "Offer",
+              "url": "https://quicktap-tags.vercel.app/#order",
+              "priceCurrency": "EGP",
+              "price": "500",
+              "availability": "https://schema.org/InStock"
+            }
           },
           {
             "@type": "FAQPage",
+            "@id": "https://quicktap-tags.vercel.app/#faq",
             "mainEntity": [
               {
                 "@type": "Question",
@@ -79,13 +150,14 @@
                 "name": "Where can I buy QuickTap NFC cards in Egypt?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "You can order directly from our website at quicktaptags.com. We deliver across Egypt within 3–5 business days."
+                  "text": "You can order directly from our website. We deliver across Egypt within 3–5 business days."
                 }
               }
             ]
           },
           {
             "@type": "BreadcrumbList",
+            "@id": "https://quicktap-tags.vercel.app/#breadcrumb",
             "itemListElement": [
               {
                 "@type": "ListItem",
@@ -104,76 +176,9 @@
         ]
       }
     </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Primary Meta Tags -->
-    <title>QuickTap — Smart Cards & Tags</title>
-    <meta name="title" content="QuickTap — Smart Cards & Tags" />
-    <meta
-      name="description"
-      content="Premium NFC cards and tags to share your contact info, social media, and links with one tap. No app needed. Order now from QuickTap."
-    />
-    <meta
-      name="keywords"
-      content="NFC card, smart business card, NFC tag, digital business card, Egypt NFC, QuickTap"
-    />
-    <meta name="author" content="QuickTap" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <link rel="canonical" href="https://quicktap-tags.vercel.app/" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://quicktap-tags.vercel.app/" />
-    <meta property="og:title" content="QuickTap — Smart NFC Cards & Tags" />
-    <meta
-      property="og:description"
-      content="Share all your links with one tap. Premium NFC cards and tags."
-    />
-    <meta
-      property="og:image"
-      content="https://quicktap-tags.vercel.app/og-image.jpg"
-    />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:locale:alternate" content="ar_EG" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://quicktap-tags.vercel.app/" />
-    <meta name="twitter:title" content="QuickTap — Smart NFC Cards & Tags" />
-    <meta
-      name="twitter:description"
-      content="Share all your links with one tap. Premium NFC cards and tags."
-    />
-    <meta
-      name="twitter:image"
-      content="https://quicktap-tags.vercel.app/og-image.jpg"
-    />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="./icon.ico" />
-
-    <!-- Theme -->
-    <meta name="theme-color" content="#7c6cf8" />
-    <meta
-      name="google-site-verification"
-      content="Q21EzFp9__t1mjmjnaVeJhSSJeFLwAjDpk1pNicqupA"
-    />
-
-    <!-- Language alternates (hreflang) -->
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="https://quicktap-tags.vercel.app/"
-    />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="https://quicktap-tags.vercel.app/"
-    />
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/Main.jsx"></script>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
