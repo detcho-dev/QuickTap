@@ -99,83 +99,109 @@ const dict = {
   },
 
   ar: {
-    // Nav
-    "nav.home": "الرئيسية",
-    "nav.order": "اطلب الآن",
-    "nav.whatsapp": "واتساب",
-    "nav.lang": "EN",
+    ar: {
+      // Nav
+      "nav.home": "الرئيسية",
+      "nav.order": "اطلب الآن",
+      "nav.whatsapp": "واتساب",
+      "nav.lang": "EN",
 
-    // Hero
-    "hero.badge": "بطاقات NFC ذكية",
-    "hero.title": "شارك كل روابطك بلمسة واحدة",
-    "hero.subtitle":
-      "بطاقة واحدة تحمل كل حساباتك — بدون تطبيق، بدون تعقيد. صممها بشكلك وشاركها في ثانية.",
-    "hero.cta": "اطلب بطاقتك",
-    "hero.cta2": "اعرف أكثر",
+      // Hero
+      "hero.badge": "بطاقات NFC ذكية",
+      "hero.title": "شارك كل روابطك بلمسة واحدة",
+      "hero.subtitle":
+        "بطاقة واحدة تحمل كل حساباتك — بدون تطبيق، بدون تعقيد. صممها بشكلك وشاركها في ثانية.",
+      "hero.cta": "اطلب بطاقتك",
+      "hero.cta2": "اعرف أكثر",
 
-    // Features
-    "features.title": "ليه QuickTap؟",
-    "features.subtitle": "كل اللي محتاجه في بطاقة واحدة",
-    "features.f1.title": "سرعة فائقة",
-    "features.f1.desc": "شارك بياناتك في ثانية واحدة بلمسة على الموبايل.",
-    "features.f2.title": "آمنة تماماً",
-    "features.f2.desc": "بياناتك محمية ومشفرة، وأنت الوحيد اللي تتحكم فيها.",
-    "features.f3.title": "تصميم مخصص",
-    "features.f3.desc": "اختر الشكل واللون والتصميم اللي يعبّر عنك.",
-    "features.f4.title": "تحديث فوري",
-    "features.f4.desc": "غيّر روابطك في أي وقت بدون ما تغيّر البطاقة.",
-    "features.f5.title": "متوافقة مع كل الأجهزة",
-    "features.f5.desc": "تشتغل مع أي موبايل حديث فيه NFC.",
-    "features.f6.title": "إحصائيات دقيقة",
-    "features.f6.desc": "اعرف مين فتح بطاقتك وامتى ومن فين.",
+      // Features
+      "features.title": "ليه QuickTap؟",
+      "features.subtitle": "كل اللي محتاجه في بطاقة واحدة",
+      "features.f1.title": "سرعة فائقة",
+      "features.f1.desc": "شارك بياناتك في ثانية واحدة بلمسة على الموبايل.",
+      "features.f2.title": "آمنة تماماً",
+      "features.f2.desc": "بياناتك محمية ومشفرة، وأنت الوحيد اللي تتحكم فيها.",
+      "features.f3.title": "تصميم مخصص",
+      "features.f3.desc": "اختر الشكل واللون والتصميم اللي يعبّر عنك.",
+      "features.f4.title": "تحديث فوري",
+      "features.f4.desc": "غيّر روابطك في أي وقت بدون ما تغيّر البطاقة.",
+      "features.f5.title": "متوافقة مع كل الأجهزة",
+      "features.f5.desc": "تشتغل مع أي موبايل حديث فيه NFC.",
+      "features.f6.title": "إحصائيات دقيقة",
+      "features.f6.desc": "اعرف مين فتح بطاقتك وامتى ومن فين.",
 
-    // How it works
-    "how.title": "إزاي بتشتغل؟",
-    "how.subtitle": "3 خطوات بس",
-    "how.s1.title": "اطلب بطاقتك",
-    "how.s1.desc": "اختار التصميم واملأ بياناتك.",
-    "how.s2.title": "قربها من الموبايل",
-    "how.s2.desc": "افتح NFC وقرب البطاقة من موبايلك.",
-    "how.s3.title": "شارك بلمسة",
-    "how.s3.desc": "كل روابطك تظهر فوراً في المتصفح.",
+      // How it works
+      "how.title": "إزاي بتشتغل؟",
+      "how.subtitle": "3 خطوات بس",
+      "how.s1.title": "اطلب بطاقتك",
+      "how.s1.desc": "اختار التصميم واملأ بياناتك.",
+      "how.s2.title": "قربها من الموبايل",
+      "how.s2.desc": "افتح NFC وقرب البطاقة من موبايلك.",
+      "how.s3.title": "شارك بلمسة",
+      "how.s3.desc": "كل روابطك تظهر فوراً في المتصفح.",
 
-    // Order form
-    "order.title": "اطلب بطاقتك",
-    "order.subtitle": "املأ البيانات وهنتواصل معاك في أقرب وقت",
-    "order.name": "الاسم الكامل",
-    "order.email": "البريد الإلكتروني",
-    "order.phone": "رقم الهاتف",
-    "order.quantity": "عدد البطاقات",
-    "order.product": "نوع المنتج",
-    "order.product.card": "بطاقة ذكية (Smart Card)",
-    "order.product.tag": "ملصق ذكي (Smart Tag)",
-    "order.station": "أقرب محطة مترو / LRT / مونوريل",
-    "order.station.placeholder": "اختر المحطة",
-    "order.select.placeholder": "اختر...",
-    "order.submit": "إرسال الطلب",
-    "order.sending": "جاري الإرسال...",
-    "order.success": "تم إرسال طلبك بنجاح! هنتواصل معاك قريب.",
-    "order.error": "حصل خطأ، حاول تاني أو تواصل معانا على واتساب.",
-    "order.required": "الحقل ده مطلوب",
-    "order.select.empty": "لا توجد نتائج",
-    "about.title": "عن QuickTap",
-    "about.subtitle": "ابتكار مصري في عالم NFC",
-    "about.p1":
-      "QuickTap شركة مصرية اتأسست في 2024، متخصصة في منتجات الـ NFC الذكية. مهمتنا إننا نلغي كروت البيزنس الورقية ونستبدلها ببدائل رقمية سريعة وصديقة للبيئة وقابلة للتحديث.",
-    "about.p2":
-      "كل بطاقاتنا بتتصمم وتتصنع وتتبعت من القاهرة. بنخدم رواد الأعمال، مندوبين المبيعات، الفنادق، ومنظمي الفعاليات في كل مصر.",
-    "about.p3":
-      "منتجاتنا متوافقة مع كل الموبايلات الحديثة اللي بتدعم NFC من Apple و Samsung و Google و Huawei و Xiaomi.",
-    "about.stat.customers": "عميل سعيد",
-    "about.stat.founded": "سنة التأسيس",
-    "about.stat.rating": "التقييم",
-    "about.stat.delivery": "أيام التوصيل",
-    "social.instagram": "إنستجرام",
-    "social.whatsapp": "واتساب",
-    "social.email": "الإيميل",
+      // Order form
+      "order.title": "اطلب بطاقتك",
+      "order.subtitle": "املأ البيانات وهنتواصل معاك في أقرب وقت",
+      "order.name": "الاسم الكامل",
+      "order.email": "البريد الإلكتروني",
+      "order.phone": "رقم الهاتف",
+      "order.quantity": "عدد البطاقات",
+      "order.product": "نوع المنتج",
+      "order.product.card": "بطاقة ذكية (Smart Card)",
+      "order.product.tag": "ملصق ذكي (Smart Tag)",
+      "order.station": "أقرب محطة مترو / LRT / مونوريل",
+      "order.station.placeholder": "اختر المحطة",
+      "order.select.placeholder": "اختر...",
+      "order.select.empty": "لا توجد نتائج",
+      "order.submit": "إرسال الطلب",
+      "order.sending": "جاري الإرسال...",
+      "order.success": "تم إرسال طلبك بنجاح! هنتواصل معاك قريب.",
+      "order.error": "حصل خطأ، حاول تاني أو تواصل معانا على واتساب.",
+      "order.required": "الحقل ده مطلوب",
 
-    // Footer
-    "footer.rights": "© 2026 QuickTap — جميع الحقوق محفوظة",
+      // FAQ
+      "faq.title": "الأسئلة الشائعة",
+      "faq.subtitle": "كل اللي محتاج تعرفه عن QuickTap",
+      "faq.q1.q": "إيه هي بطاقة الـ NFC؟",
+      "faq.q1.a":
+        "بطاقة NFC هي بطاقة ذكية بتستخدم تقنية الاتصال قريب المدى (Near Field Communication) لمشاركة معلوماتك الرقمية — زي بيانات التواصل أو روابط السوشيال ميديا — مع أي موبايل حديث بيدعم NFC بمجرد ما تقرّبها منه.",
+      "faq.q2.q": "إزاي QuickTap بتشتغل؟",
+      "faq.q2.a":
+        "اطلب بطاقتك من QuickTap، قرّبها من أي موبايل فيه NFC، وبروفايلك الرقمي هيفتح فوراً في المتصفح. مش محتاج أي تطبيق.",
+      "faq.q3.q": "محتاج تطبيق عشان أستخدم QuickTap؟",
+      "faq.q3.a":
+        "لأ. QuickTap بتشتغل مباشرة مع أي موبايل حديث بيدعم NFC. بس قرّب البطاقة والبروفايل هيفتح في المتصفح.",
+      "faq.q4.q": "أقدر أحدّث روابطي بعد استلام البطاقة؟",
+      "faq.q4.a":
+        "أيوه. تقدر تحدّث البروفايل والروابط في أي وقت من خلال التواصل معانا، من غير ما تغيّر البطاقة نفسها.",
+      "faq.q5.q": "منين أقدر أشتري بطاقات QuickTap في مصر؟",
+      "faq.q5.a":
+        "تقدر تطلب مباشرة من موقعنا quicktap-tags.vercel.app. بنوصّل للقاهرة والجيزة خلال 3-5 أيام عمل.",
+
+      // About
+      "about.title": "عن QuickTap",
+      "about.subtitle": "ابتكار مصري في عالم NFC",
+      "about.p1":
+        "QuickTap شركة مصرية اتأسست في 2024، متخصصة في منتجات الـ NFC الذكية. مهمتنا إننا نلغي كروت البيزنس الورقية ونستبدلها ببدائل رقمية سريعة وصديقة للبيئة وقابلة للتحديث.",
+      "about.p2":
+        "كل بطاقاتنا بتتصمم وتتصنع وتتبعت من القاهرة. بنخدم رواد الأعمال، مندوبين المبيعات، الفنادق، ومنظمي الفعاليات في كل مصر.",
+      "about.p3":
+        "منتجاتنا متوافقة مع كل الموبايلات الحديثة اللي بتدعم NFC من Apple و Samsung و Google و Huawei و Xiaomi.",
+      "about.stat.customers": "عميل سعيد",
+      "about.stat.founded": "سنة التأسيس",
+      "about.stat.rating": "التقييم",
+      "about.stat.delivery": "أيام التوصيل",
+
+      // Social
+      "social.instagram": "إنستجرام",
+      "social.whatsapp": "واتساب",
+      "social.email": "الإيميل",
+      "social.followUs": "تابعنا",
+
+      // Footer
+      "footer.rights": "© 2026 QuickTap — جميع الحقوق محفوظة",
+    },
   },
 };
 
