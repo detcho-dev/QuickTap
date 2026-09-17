@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, Nfc, Instagram } from "lucide-react";
+import { Nfc, MessageCircle, Mail } from "lucide-react";
 import { CONTACT_EMAIL, WHATSAPP_URL } from "./Nav";
 import { useI18n } from "../lib/i18n";
 import { SOCIAL_LINKS } from "../lib/social";
@@ -11,7 +11,6 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         {/* Row 1: Logo + Social icons */}
         <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
-          {/* Logo */}
           <div className="flex items-center gap-2.5">
             <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-brand">
               <Nfc className="h-5 w-5 text-white" strokeWidth={2.4} />
@@ -21,7 +20,6 @@ export function Footer() {
             </span>
           </div>
 
-          {/* Social icons */}
           <div className="flex items-center gap-3">
             {SOCIAL_LINKS.map(({ name, href, icon: Icon, color }) => (
               <a
@@ -39,10 +37,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="my-8 h-px bg-border" />
 
-        {/* Row 2: Contact buttons */}
         <div className="flex flex-wrap justify-center gap-3">
           <a
             href={WHATSAPP_URL}
@@ -62,7 +58,6 @@ export function Footer() {
           </a>
         </div>
 
-        {/* Row 3: Copyright */}
         <p className="mt-8 text-center text-sm text-muted-foreground">
           {t("footer.rights")}
         </p>

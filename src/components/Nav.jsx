@@ -1,6 +1,6 @@
-import { Link } from "@tanstack/react-router"; // لو بتستخدم TanStack
-import { Nfc, MessageCircle, Languages, Instagram } from "lucide-react";
+import { Nfc, MessageCircle, Languages } from "lucide-react";
 import { useI18n } from "../lib/i18n";
+import { InstagramIcon } from "./SocialIcons";
 
 export const WHATSAPP_URL = "https://wa.me/201021859331";
 export const CONTACT_EMAIL = "quicktaptags@hotmail.com";
@@ -44,7 +44,7 @@ export function Nav() {
             title="Instagram"
             className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border bg-secondary text-pink-400 transition-all hover:-translate-y-0.5 hover:border-brand/60 hover:bg-accent"
           >
-            <Instagram className="h-4 w-4" />
+            <InstagramIcon className="h-4 w-4" />
           </a>
 
           {/* WhatsApp */}
