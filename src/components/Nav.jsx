@@ -1,6 +1,6 @@
 import { Nfc, MessageCircle, Languages } from "lucide-react";
 import { useI18n } from "../lib/i18n";
-import { InstagramIcon } from "./SocialIcons";
+import { InstagramIcon } from "./SocialIcon";
 
 export const WHATSAPP_URL = "https://wa.me/201021859331";
 export const CONTACT_EMAIL = "quicktaptags@hotmail.com";

@@ -5,7 +5,7 @@ import {
   FacebookIcon,
   TwitterIcon,
   TikTokIcon,
-} from "@/components/SocialIcons";
+} from "../components/SocialIcon";
 
 export const SOCIAL_LINKS = [
   {
