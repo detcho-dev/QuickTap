@@ -40,12 +40,12 @@ function HomePage() {
 
 function NotFound() {
   return (
-    <div className="notfound-page">
-      <h1 className="notfound-code">404</h1>
-      <p className="notfound-text">Page not found</p>
-      <Link to="/" className="notfound-btn">
-        ← Back to Home
-      </Link>
+    <div style={{ textAlign: "center", padding: "80px 20px" }}>
+      <h1>404</h1>
+      <p>404 Page Not Found</p>
+      <a href="/" style={(cursor = Pointer)}>
+        Back to Home
+      </a>
     </div>
   );
 }
