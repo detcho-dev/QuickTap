@@ -10,8 +10,8 @@ import { Footer } from "./components/Footer";
 import { FAQ } from "./components/FAQ";
 import { About } from "./components/About";
 
-import UserPage from "./sites/UserPage";
-import CompanyPage from "./sites/CompanyPage";
+import UserPage from "./site/UserPage";
+import CompanyPage from "./site/CompanyPage";
 
 function Layout() {
   return (
