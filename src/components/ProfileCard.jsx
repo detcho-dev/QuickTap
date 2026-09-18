@@ -1,6 +1,6 @@
 import {
   FaWhatsapp,
-  FaPhone,
+  FaPhoneAlt,
   FaInstagram,
   FaFacebook,
   FaTwitter,
@@ -17,7 +17,11 @@ export default function ProfileCard({ data, type }) {
       url: data.whatsapp && `https://wa.me/${data.whatsapp.replace(/\D/g, "")}`,
       icon: <FaWhatsapp />,
     },
-    { key: "phone", url: data.phone && `tel:${data.phone}`, icon: <FaPhone /> },
+    {
+      key: "phone",
+      url: data.phone && `tel:${data.phone}`,
+      icon: <FaPhoneAlt />,
+    },
     {
       key: "instagram",
       url:
