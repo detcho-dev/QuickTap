@@ -1,7 +1,6 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 import { I18nProvider } from "./lib/i18n";
 
-// الصفحة الرئيسية
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
 import { Features } from "./components/Features";
@@ -11,38 +10,42 @@ import { Footer } from "./components/Footer";
 import { FAQ } from "./components/FAQ";
 import { About } from "./components/About";
 
-// الصفحات الفرعية
-import User from "./site/User";
-import Company from "./site/Company";
-import { Pointer } from "lucide-react";
+import UserPage from "./sites/UserPage";
+import CompanyPage from "./sites/CompanyPage";
 
-// الصفحة الرئيسية ككومبوننت منفصل
-function HomePage() {
+function Layout() {
   return (
     <>
       <Nav />
       <main>
-        <Hero />
-        <Features />
-        <HowItWorks />
-        <About />
-        <OrderForm />
-        <FAQ />
+        <Outlet />
       </main>
       <Footer />
     </>
   );
 }
 
-// صفحة 404
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <Features />
+      <HowItWorks />
+      <About />
+      <OrderForm />
+      <FAQ />
+    </>
+  );
+}
+
 function NotFound() {
   return (
-    <div style={{ textAlign: "center", padding: "80px 20px" }}>
-      <h1>404</h1>
-      <p>404 Page Not Found</p>
-      <a href="/" style={(cursor = Pointer)}>
-        Back to Home
-      </a>
+    <div className="notfound-page">
+      <h1 className="notfound-code">404</h1>
+      <p className="notfound-text">Page not found</p>
+      <Link to="/" className="notfound-btn">
+        ← Back to Home
+      </Link>
     </div>
   );
 }
@@ -51,14 +54,18 @@ export default function App() {
   return (
     <I18nProvider>
       <BrowserRouter>
-        <div className="min-h-screen">
-          <Routes>
+        <Routes>
+          {/* صفحات فيها Nav + Footer */}
+          <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/user/:id" element={<User />} />
-            <Route path="/company/:id" element={<Company />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
+          </Route>
+
+          {/* صفحات البروفايل — من غير Nav/Footer عشان تبقى نضيفة */}
+          <Route path="/user/:id" element={<UserPage />} />
+          <Route path="/company/:id" element={<CompanyPage />} />
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </BrowserRouter>
     </I18nProvider>
   );
