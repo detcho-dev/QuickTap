@@ -12,8 +12,8 @@ import { FAQ } from "./components/FAQ";
 import { About } from "./components/About";
 
 // الصفحات الفرعية
-import UserPage from "./sites/UserPage";
-import CompanyPage from "./sites/CompanyPage";
+import User from "./site/User";
+import Company from "./site/Company";
 
 // الصفحة الرئيسية ككومبوننت منفصل
 function HomePage() {
@@ -38,8 +38,8 @@ function NotFound() {
   return (
     <div style={{ textAlign: "center", padding: "80px 20px" }}>
       <h1>404</h1>
-      <p>الصفحة غير موجودة</p>
-      <a href="/">الرجوع للرئيسية</a>
+      <p>404 Page Not Found</p>
+      <a href="/">Back to Home</a>
     </div>
   );
 }
@@ -51,8 +51,8 @@ export default function App() {
         <div className="min-h-screen">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/user/:id" element={<UserPage />} />
-            <Route path="/company/:id" element={<CompanyPage />} />
+            <Route path="/user/:id" element={<User />} />
+            <Route path="/company/:id" element={<Company />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
