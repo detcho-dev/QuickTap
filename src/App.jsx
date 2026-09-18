@@ -14,6 +14,7 @@ import { About } from "./components/About";
 // الصفحات الفرعية
 import User from "./site/User";
 import Company from "./site/Company";
+import { Pointer } from "lucide-react";
 
 // الصفحة الرئيسية ككومبوننت منفصل
 function HomePage() {
@@ -39,7 +40,9 @@ function NotFound() {
     <div style={{ textAlign: "center", padding: "80px 20px" }}>
       <h1>404</h1>
       <p>404 Page Not Found</p>
-      <a href="/">Back to Home</a>
+      <a href="/" style={(cursor = Pointer)}>
+        Back to Home
+      </a>
     </div>
   );
 }
