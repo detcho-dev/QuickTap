@@ -1,6 +1,12 @@
-import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
 import { I18nProvider } from "./lib/i18n";
-
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
 import { Features } from "./components/Features";
@@ -12,6 +18,9 @@ import { About } from "./components/About";
 
 import UserPage from "./site/UserPage";
 import CompanyPage from "./site/CompanyPage";
+import AdminLogin from "./site/AdminLogin";
+import AdminDashboard from "./site/AdminDashboard";
+import AdminRoute from "./components/AdminRoute";
 
 function Layout() {
   return (
@@ -40,12 +49,12 @@ function HomePage() {
 
 function NotFound() {
   return (
-    <div style={{ textAlign: "center", padding: "80px 20px" }}>
-      <h1>404</h1>
-      <p>404 Page Not Found</p>
-      <a href="/" style={(cursor = Pointer)}>
-        Back to Home
-      </a>
+    <div className="notfound-page">
+      <h1 className="notfound-code">404</h1>
+      <p className="notfound-text">Page not found</p>
+      <Link to="/" className="notfound-btn">
+        ← Back to Home
+      </Link>
     </div>
   );
 }
@@ -55,14 +64,22 @@ export default function App() {
     <I18nProvider>
       <BrowserRouter>
         <Routes>
-          {/* صفحات فيها Nav + Footer */}
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
           </Route>
 
-          {/* صفحات البروفايل — من غير Nav/Footer عشان تبقى نضيفة */}
           <Route path="/user/:id" element={<UserPage />} />
           <Route path="/company/:id" element={<CompanyPage />} />
+
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminDashboard />
+              </AdminRoute>
+            }
+          />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
