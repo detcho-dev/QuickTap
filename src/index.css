@@ -623,6 +623,58 @@ textarea.admin-input {
   }
 }
 
+  /* ===== Powered By ===== */
+.powered-by {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 16px;
+  font-size: 12px;
+  color: var(--muted-foreground);
+  opacity: 0.75;
+  transition: opacity 0.25s ease;
+}
+
+.powered-by:hover {
+  opacity: 1;
+}
+
+.powered-by-text {
+  letter-spacing: 0.02em;
+}
+
+.powered-by-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+.powered-by-link:hover {
+  transform: translateY(-1px);
+}
+
+.powered-by-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  object-fit: contain;
+  box-shadow: 0 0 12px -4px rgba(124, 108, 248, 0.5);
+  background: transparent;
+}
+
+.powered-by-brand {
+  font-weight: 700;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 @media (max-width: 480px) {
   .social-btn {
     width: 50px;
