@@ -76,12 +76,14 @@ h3 {
 }
 
 /* ===== Profile Page Styles (QuickTap theme) ===== */
+/* ===== Profile Page (full viewport, no scroll) ===== */
 .profile-page {
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;                /* ← مهم للموبايل */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 16px 16px;
   background: var(--background);
   background-image:
     radial-gradient(
@@ -94,6 +96,18 @@ h3 {
       rgba(0, 212, 255, 0.12),
       transparent 70%
     );
+  overflow: hidden;
+}
+
+.profile-page-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  gap: 0;
 }
 
 .profile-card {
@@ -598,31 +612,80 @@ textarea.admin-input {
   gap: 8px;
 }
 
-@media (max-width: 720px) {
-  .admin-grid-2,
-  .admin-grid-3 {
-    grid-template-columns: 1fr;
+@media (max-height: 720px) {
+  .profile-card {
+    padding: 22px 20px 20px;
   }
-  .admin-page {
-    padding: 24px 16px 60px;
+  .profile-avatar-wrap,
+  .profile-avatar,
+  .profile-avatar-fallback {
+    width: 84px;
+    height: 84px;
   }
-  .admin-form,
-  .admin-list {
-    padding: 18px;
+  .profile-avatar-fallback {
+    font-size: 32px;
   }
-  .admin-row {
-    flex-direction: column;
-    align-items: stretch;
+  .profile-name {
+    font-size: 1.3rem;
   }
-  .admin-row-actions {
-    justify-content: stretch;
+  .profile-bio {
+    font-size: 0.85rem;
+    margin-bottom: 16px;
   }
-  .admin-row-actions > * {
-    flex: 1;
-    justify-content: center;
+  .social-btn {
+    width: 46px;
+    height: 46px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+  .social-grid {
+    gap: 8px;
+  }
+  .powered-by {
+    margin-top: 12px;
+    padding: 10px;
   }
 }
 
+@media (max-height: 600px) {
+  .profile-avatar-wrap,
+  .profile-avatar,
+  .profile-avatar-fallback {
+    width: 68px;
+    height: 68px;
+  }
+  .profile-avatar-fallback {
+    font-size: 26px;
+  }
+  .profile-name {
+    font-size: 1.15rem;
+    margin-bottom: 4px;
+  }
+  .profile-badge {
+    font-size: 0.6rem;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .profile-bio {
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+  }
+  .social-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+  .powered-by {
+    margin-top: 8px;
+    padding: 6px;
+    font-size: 11px;
+  }
+  .powered-by-logo {
+    width: 18px;
+    height: 18px;
+  }
+}
   /* ===== Powered By ===== */
 .powered-by {
   display: flex;
