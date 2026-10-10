@@ -18,6 +18,8 @@ const EMPTY = {
   linkedin: "",
   github: "",
   discord: "",
+  tiktok: "",        
+  website: "",       
 };
 
 export default function AdminDashboard() {
@@ -270,6 +272,26 @@ export default function AdminDashboard() {
               placeholder="https://discord.gg/..."
               value={form.discord}
               onChange={(e) => update("discord", e.target.value)}
+            />
+          </div>
+
+                    <div className="admin-field">
+            <label>TikTok</label>
+            <input
+              className="admin-input"
+              placeholder="username"
+              value={form.tiktok}
+              onChange={(e) => update("tiktok", e.target.value)}
+            />
+          </div>
+
+          <div className="admin-field">
+            <label>Website</label>
+            <input
+              className="admin-input"
+              placeholder="https://example.com"
+              value={form.website}
+              onChange={(e) => update("website", e.target.value)}
             />
           </div>
         </div>
