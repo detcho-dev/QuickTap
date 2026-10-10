@@ -41,10 +41,8 @@ export default function ProfilePage({ type }) {
   if (loading) {
     return (
       <div className="profile-page">
-        <div className="profile-page-inner">
-          <div className="profile-card">
-            <p className="profile-bio">Loading...</p>
-          </div>
+        <div className="profile-card">
+          <p className="profile-bio">Loading...</p>
         </div>
       </div>
     );
@@ -53,26 +51,22 @@ export default function ProfilePage({ type }) {
   if (error) {
     return (
       <div className="profile-page">
-        <div className="profile-page-inner">
-          <div className="profile-card">
-            <h1 className="profile-name">Not Found</h1>
-            <p className="profile-bio">{error}</p>
-            <a href="/" className="notfound-btn" style={{ marginTop: 8 }}>
-              ← Back to Home
-            </a>
-          </div>
-          <PoweredBy />
+        <div className="profile-card">
+          <h1 className="profile-name">Not Found</h1>
+          <p className="profile-bio">{error}</p>
+          <a href="/" className="notfound-btn" style={{ marginTop: 8 }}>
+            ← Back to Home
+          </a>
         </div>
+        <PoweredBy />
       </div>
     );
   }
 
   return (
     <div className="profile-page">
-      <div className="profile-page-inner">
-        <ProfileCard data={data} type={type} />
-        <PoweredBy />
-      </div>
+      <ProfileCard data={data} type={type} />
+      <PoweredBy />
     </div>
   );
 }
