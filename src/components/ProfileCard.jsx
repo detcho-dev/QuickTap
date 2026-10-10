@@ -4,11 +4,13 @@ import {
   FaInstagram,
   FaFacebook,
   FaTwitter,
+  FaTiktok,
   FaLinkedin,
   FaGithub,
   FaDiscord,
 } from "react-icons/fa";
 import { SiThreads } from "react-icons/si";
+import { Globe } from "lucide-react";
 
 export default function ProfileCard({ data, type }) {
   const links = [
@@ -30,6 +32,15 @@ export default function ProfileCard({ data, type }) {
           ? data.instagram
           : `https://instagram.com/${data.instagram}`),
       icon: <FaInstagram />,
+    },
+    {
+      key: "tiktok",
+      url:
+        data.tiktok &&
+        (data.tiktok.startsWith("http")
+          ? data.tiktok
+          : `https://tiktok.com/@${data.tiktok}`),
+      icon: <FaTiktok />,
     },
     {
       key: "facebook",
@@ -77,6 +88,15 @@ export default function ProfileCard({ data, type }) {
       icon: <FaGithub />,
     },
     { key: "discord", url: data.discord, icon: <FaDiscord /> },
+    {
+      key: "website",
+      url:
+        data.website &&
+        (data.website.startsWith("http")
+          ? data.website
+          : `https://${data.website}`),
+      icon: <Globe />,
+    },
   ].filter((l) => l.url);
 
   return (
