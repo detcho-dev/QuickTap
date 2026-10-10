@@ -100,48 +100,46 @@ export default function ProfileCard({ data, type }) {
   ].filter((l) => l.url);
 
   return (
-    <div className="profile-page">
-      <div className="profile-card">
-        {data.avatar ? (
-          <div className="profile-avatar-wrap">
-            <img src={data.avatar} alt={data.name} className="profile-avatar" />
+    <div className="profile-card">
+      {data.avatar ? (
+        <div className="profile-avatar-wrap">
+          <img src={data.avatar} alt={data.name} className="profile-avatar" />
+        </div>
+      ) : (
+        <div className="profile-avatar-wrap">
+          <div className="profile-avatar-fallback">
+            {data.name?.[0]?.toUpperCase() || "?"}
           </div>
-        ) : (
-          <div className="profile-avatar-wrap">
-            <div className="profile-avatar-fallback">
-              {data.name?.[0]?.toUpperCase() || "?"}
-            </div>
-          </div>
-        )}
+        </div>
+      )}
 
-        <span className="profile-badge">
-          {type === "company" ? "Company" : "Personal"}
-        </span>
+      <span className="profile-badge">
+        {type === "company" ? "Company" : "Personal"}
+      </span>
 
-        <h1 className="profile-name">{data.name}</h1>
+      <h1 className="profile-name">{data.name}</h1>
 
-        {data.bio && <p className="profile-bio">{data.bio}</p>}
+      {data.bio && <p className="profile-bio">{data.bio}</p>}
 
-        {links.length > 0 ? (
-          <div className="social-grid">
-            {links.map((l) => (
-              <a
-                key={l.key}
-                href={l.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-btn"
-                aria-label={l.key}
-                title={l.key}
-              >
-                {l.icon}
-              </a>
-            ))}
-          </div>
-        ) : (
-          <p className="social-empty">No links available</p>
-        )}
-      </div>
+      {links.length > 0 ? (
+        <div className="social-grid">
+          {links.map((l) => (
+            <a
+              key={l.key}
+              href={l.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-btn"
+              aria-label={l.key}
+              title={l.key}
+            >
+              {l.icon}
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p className="social-empty">No links available</p>
+      )}
     </div>
   );
 }
