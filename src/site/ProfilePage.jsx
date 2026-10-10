@@ -3,6 +3,11 @@ import { useParams } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import ProfileCard from "../components/ProfileCard";
 
+// 🔽 غيّر ده للينك اللوجو بتاعك
+const LOGO_URL = "https://quicktap-tags.vercel.app/og-image.png"; // أو لينك كامل زي https://...
+const SITE_URL = "https://quicktap-tags.vercel.app";
+const SITE_NAME = "QuickTap";
+
 export default function ProfilePage({ type }) {
   const { id } = useParams();
   const [data, setData] = useState(null);
@@ -53,9 +58,41 @@ export default function ProfilePage({ type }) {
             ← Back to Home
           </a>
         </div>
+        <PoweredBy />
       </div>
     );
   }
 
-  return <ProfileCard data={data} type={type} />;
+  return (
+    <>
+      <ProfileCard data={data} type={type} />
+      <PoweredBy />
+    </>
+  );
+}
+
+function PoweredBy() {
+  return (
+    <div className="powered-by">
+      <span className="powered-by-text">Powered By</span>
+      <a
+        href={SITE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="powered-by-link"
+        aria-label={`${SITE_NAME} website`}
+        title={SITE_NAME}
+      >
+        <img
+          src={LOGO_URL}
+          alt={SITE_NAME}
+          className="powered-by-logo"
+          loading="lazy"
+          width={24}
+          height={24}
+        />
+        <span className="powered-by-brand">{SITE_NAME}</span>
+      </a>
+    </div>
+  );
 }
