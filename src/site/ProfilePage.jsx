@@ -4,7 +4,7 @@ import { supabase } from "../lib/supabase";
 import ProfileCard from "../components/ProfileCard";
 
 // 🔽 غيّر ده للينك اللوجو بتاعك
-const LOGO_URL = "https://quicktap-tags.vercel.app/og-image.png"; // أو لينك كامل زي https://...
+const LOGO_URL = "https://quicktap-tags.vercel.app/og-image.png";
 const SITE_URL = "https://quicktap-tags.vercel.app";
 const SITE_NAME = "QuickTap";
 
@@ -41,8 +41,10 @@ export default function ProfilePage({ type }) {
   if (loading) {
     return (
       <div className="profile-page">
-        <div className="profile-card">
-          <p className="profile-bio">Loading...</p>
+        <div className="profile-page-inner">
+          <div className="profile-card">
+            <p className="profile-bio">Loading...</p>
+          </div>
         </div>
       </div>
     );
@@ -51,23 +53,27 @@ export default function ProfilePage({ type }) {
   if (error) {
     return (
       <div className="profile-page">
-        <div className="profile-card">
-          <h1 className="profile-name">Not Found</h1>
-          <p className="profile-bio">{error}</p>
-          <a href="/" className="notfound-btn" style={{ marginTop: 8 }}>
-            ← Back to Home
-          </a>
+        <div className="profile-page-inner">
+          <div className="profile-card">
+            <h1 className="profile-name">Not Found</h1>
+            <p className="profile-bio">{error}</p>
+            <a href="/" className="notfound-btn" style={{ marginTop: 8 }}>
+              ← Back to Home
+            </a>
+          </div>
+          <PoweredBy />
         </div>
-        <PoweredBy />
       </div>
     );
   }
 
   return (
-    <>
-      <ProfileCard data={data} type={type} />
-      <PoweredBy />
-    </>
+    <div className="profile-page">
+      <div className="profile-page-inner">
+        <ProfileCard data={data} type={type} />
+        <PoweredBy />
+      </div>
+    </div>
   );
 }
 
