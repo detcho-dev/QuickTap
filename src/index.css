@@ -84,6 +84,7 @@ h3 {
   flex-direction: column;        /* ← التغيير الأساسي */
   align-items: center;
   justify-content: center;
+  gap: 20px;
   padding: 40px 20px;
   background: var(--background);
   background-image:
