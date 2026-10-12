@@ -2,8 +2,8 @@
 // نفس القيم اللي في src/lib/supabase.js
 // حط القيم الحقيقية بتاعتك هنا
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const SUPABASE_URL = 'https://zumholtcgowtkszaeniu.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp1bWhvbHRjZ293dGtzemFlbml1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg3Mjg2ODgsImV4cCI6MjEwNDMwNDY4OH0.9eXUVwx027vXN-vDaOwZ5iF2MqOfMj47_NhUW-VQhP4';
 
 // عميل Supabase بسيط (بدون مكتبات)
 const supabaseClient = {
