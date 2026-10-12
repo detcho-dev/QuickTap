@@ -4,7 +4,7 @@
 
     { "source": "/invoice/:path*", "destination": "/invoice/:path*" },
 
-    { "source": "/((?!invoice/).*)", "destination": "/index.html" }
+    { "source": "/((?!invoice/).*)", "destination": "/index.html" },
 
     { "source": "/(.*)", "destination": "/" }
   ],
