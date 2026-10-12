@@ -17,11 +17,55 @@ let state = {
 function isLoggedIn() {
   return sessionStorage.getItem(AUTH_KEY) === 'ok';
 }
-function login() {
-  sessionStorage.setItem(AUTH_KEY, 'ok');
-  showApp();
+async function login() {
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPassword').value;
+  const err = document.getElementById('loginError');
+  err.classList.add('d-none');
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password: pass })
+    });
+
+    if (!res.ok) {
+      err.textContent = 'Invalid email or password';
+      err.classList.remove('d-none');
+      return;
+    }
+
+    const data = await res.json();
+    // خزّن الـ token عشان supabaseClient يستخدمه
+    sessionStorage.setItem('access_token', data.access_token);
+    sessionStorage.setItem('refresh_token', data.refresh_token);
+    sessionStorage.setItem(AUTH_KEY, 'ok');
+    showApp();
+  } catch (e) {
+    err.textContent = 'Login failed: ' + e.message;
+    err.classList.remove('d-none');
+  }
 }
-function logout() {
+async function logout() {
+  const token = sessionStorage.getItem('access_token');
+  if (token) {
+    // اختياري: بلّغ Supabase إن الجلسة انتهت
+    try {
+      await fetch(`${SUPABASE_URL}/auth/v1/logout`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`
+        }
+      });
+    } catch (e) { /* تجاهل */ }
+  }
+  sessionStorage.removeItem('access_token');
+  sessionStorage.removeItem('refresh_token');
   sessionStorage.removeItem(AUTH_KEY);
   location.reload();
 }
