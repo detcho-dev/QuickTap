@@ -119,7 +119,7 @@ async function loadDashboard() {
 
   const revenue = state.invoices.reduce((s, inv) => s + Number(inv.total || 0), 0);
   document.getElementById('statRevenue').textContent =
-    (state.settings?.currency || 'USD') + ' ' + revenue.toFixed(2);
+    (state.settings?.currency || 'EGP') + ' ' + revenue.toFixed(2);
 
   // recent 5
   const recent = state.invoices.slice(0, 5);
@@ -505,7 +505,7 @@ function fillSettingsForm() {
   document.getElementById('setCompanyPhone').value = s.company_phone || '';
   document.getElementById('setDiscount').value = s.company_discount_percent || 0;
   document.getElementById('setDelivery').value = s.default_delivery_fee || 0;
-  document.getElementById('setCurrency').value = s.currency || 'USD';
+  document.getElementById('setCurrency').value = s.currency || 'EGP';
   document.getElementById('setPrefix').value = s.invoice_prefix || 'INV';
 }
 
@@ -516,7 +516,7 @@ async function saveSettings() {
     company_phone: document.getElementById('setCompanyPhone').value.trim(),
     company_discount_percent: parseFloat(document.getElementById('setDiscount').value) || 0,
     default_delivery_fee: parseFloat(document.getElementById('setDelivery').value) || 0,
-    currency: document.getElementById('setCurrency').value.trim() || 'USD',
+    currency: document.getElementById('setCurrency').value.trim() || 'EGP',
     invoice_prefix: document.getElementById('setPrefix').value.trim() || 'INV',
     updated_at: new Date().toISOString()
   };
@@ -531,7 +531,7 @@ async function saveSettings() {
 
 /* ============ HELPERS ============ */
 function money(n) {
-  const cur = state.settings?.currency || 'USD';
+  const cur = state.settings?.currency || 'EGP';
   return cur + ' ' + Number(n || 0).toFixed(2);
 }
 function esc(s) {
