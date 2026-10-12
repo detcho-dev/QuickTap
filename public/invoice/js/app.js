@@ -138,7 +138,7 @@ async function loadDashboard() {
       <td>${money(inv.total)}</td>
       <td>${new Date(inv.created_at).toLocaleString()}</td>
       <td><a class="btn btn-sm btn-outline-primary" target="_blank"
-             href="invoice.html?inv=${encodeURIComponent(inv.invoice_number)}">View</a></td>
+             href="invoice/invoice.html?inv=${encodeURIComponent(inv.invoice_number)}">View</a></td>
     </tr>`;
   });
   html += '</tbody></table>';
@@ -225,7 +225,7 @@ function renderInvoicesTable() {
       <td>${new Date(inv.created_at).toLocaleString()}</td>
       <td class="text-end">
         <a class="btn btn-sm btn-outline-primary" target="_blank"
-           href="invoice.html?inv=${encodeURIComponent(inv.invoice_number)}">View</a>
+           href="invoice/invoice.html?inv=${encodeURIComponent(inv.invoice_number)}">View</a>
         <button class="btn btn-sm btn-outline-secondary"
                 onclick="copyLink('${inv.invoice_number}')">Copy link</button>
       </td>
@@ -493,7 +493,7 @@ function copyInvoiceLink() {
 }
 
 function copyLink(invNumber) {
-  const link = new URL(`invoice.html?inv=${encodeURIComponent(invNumber)}`, location.href).href;
+  const link = new URL(`invoice/invoice.html?inv=${encodeURIComponent(invNumber)}`, location.href).href;
   navigator.clipboard.writeText(link).then(() => alert('Link copied!'));
 }
 
