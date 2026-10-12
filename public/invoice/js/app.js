@@ -463,7 +463,7 @@ async function submitCheckout() {
     }
 
     // show link modal
-    const link = new URL(`invoice.html?inv=${encodeURIComponent(invoice.invoice_number)}`, location.href).href;
+    const link = new URL(`invoice/invoice.html?inv=${encodeURIComponent(invoice.invoice_number)}`, location.href).href;
     document.getElementById('invoiceLink').value = link;
     document.getElementById('openInvoiceLink').href = link;
     new bootstrap.Modal(document.getElementById('linkModal')).show();
