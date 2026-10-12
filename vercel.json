@@ -1,3 +1,13 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [
+    { "source": "/invoice/INV-:rest*", "destination": "/invoice/view.html" },
+
+    { "source": "/invoice/:path*", "destination": "/invoice/:path*" },
+
+    { "source": "/((?!invoice/).*)", "destination": "/index.html" }
+
+    { "source": "/(.*)", "destination": "/" }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }
