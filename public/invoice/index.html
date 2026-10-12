@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ LOGIN OVERLAY ============ -->
+<div id="loginOverlay" class="login-overlay">
+  <div class="card p-4 shadow" style="width: 360px;">
+    <h4 class="mb-3">Sign in</h4>
+    <div id="loginError" class="alert alert-danger py-2 d-none"></div>
+    <input id="loginEmail" class="form-control mb-2" type="email" placeholder="Email">
+    <input id="loginPassword" class="form-control mb-3" type="password" placeholder="Password">
+    <button id="loginBtn" class="btn btn-primary w-100">Sign in</button>
+  </div>
+</div>
+
+<!-- ============ MAIN APP ============ -->
+<div id="app" class="d-none">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h5 class="text-white mb-4 px-3">POS</h5>
+    <nav class="nav flex-column">
+      <a class="nav-link active" data-page="dashboard" href="#">Dashboard</a>
+      <a class="nav-link" data-page="products" href="#">Products</a>
+      <a class="nav-link" data-page="offers" href="#">Offers</a>
+      <a class="nav-link" data-page="checkout" href="#">Checkout</a>
+      <a class="nav-link" data-page="invoices" href="#">Invoices</a>
+      <a class="nav-link" data-page="settings" href="#">Settings</a>
+    </nav>
+    <button id="logoutBtn" class="btn btn-outline-light btn-sm mt-4 mx-3">Sign out</button>
+  </aside>
+
+  <!-- Content -->
+  <main class="content">
+    <!-- Dashboard -->
+    <section id="page-dashboard" class="page">
+      <h3 class="mb-4">Dashboard</h3>
+      <div class="row g-3 mb-4">
+        <div class="col-md-3">
+          <div class="card stat-card p-3">
+            <div class="text-muted small">Total Products</div>
+            <div id="statProducts" class="h3 mb-0">0</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card stat-card p-3">
+            <div class="text-muted small">Total Offers</div>
+            <div id="statOffers" class="h3 mb-0">0</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card stat-card p-3">
+            <div class="text-muted small">Total Invoices</div>
+            <div id="statInvoices" class="h3 mb-0">0</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card stat-card p-3">
+            <div class="text-muted small">Total Revenue</div>
+            <div id="statRevenue" class="h3 mb-0">0</div>
+          </div>
+        </div>
+      </div>
+      <h5 class="mb-3">Recent Invoices</h5>
+      <div id="recentInvoices" class="table-responsive"></div>
+    </section>
+
+    <!-- Products -->
+    <section id="page-products" class="page d-none">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Products</h3>
+        <button class="btn btn-primary" onclick="openProductModal()">+ Add Product</button>
+      </div>
+      <div id="productsTable" class="table-responsive"></div>
+    </section>
+
+    <!-- Offers -->
+    <section id="page-offers" class="page d-none">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Offers</h3>
+        <button class="btn btn-primary" onclick="openOfferModal()">+ Add Offer</button>
+      </div>
+      <div id="offersTable" class="table-responsive"></div>
+    </section>
+
+    <!-- Checkout -->
+    <section id="page-checkout" class="page d-none">
+      <h3 class="mb-4">Checkout</h3>
+      <div class="row g-4">
+        <div class="col-md-7">
+          <div class="card p-3 mb-3">
+            <h6>Add Items</h6>
+            <div class="input-group mb-2">
+              <select id="checkoutItemSelect" class="form-select"></select>
+              <input id="checkoutQty" type="number" class="form-control" value="1" min="1" style="max-width:90px">
+              <button class="btn btn-secondary" onclick="addCheckoutItem()">Add</button>
+            </div>
+          </div>
+          <div class="card p-3">
+            <h6>Cart</h6>
+            <div id="cartItems"></div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="card p-3">
+            <h6>Customer Info</h6>
+            <input id="custName" class="form-control mb-2" placeholder="Customer name *">
+            <input id="custEmail" class="form-control mb-2" placeholder="Email">
+            <input id="custPhone" class="form-control mb-2" placeholder="Phone">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="isCompany">
+              <label class="form-check-label" for="isCompany">This order is for a company/organization</label>
+            </div>
+            <div class="mb-2">
+              <label class="form-label small">Delivery Fee</label>
+              <input id="deliveryFee" type="number" class="form-control" value="0" step="0.01">
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between"><span>Subtotal</span><span id="sumSubtotal">0.00</span></div>
+            <div class="d-flex justify-content-between text-success d-none" id="discountRow">
+              <span>Company discount (<span id="discountPercent">0</span>%)</span>
+              <span>-<span id="sumDiscount">0.00</span></span>
+            </div>
+            <div class="d-flex justify-content-between"><span>Delivery</span><span id="sumDelivery">0.00</span></div>
+            <hr>
+            <div class="d-flex justify-content-between fw-bold"><span>Total</span><span id="sumTotal">0.00</span></div>
+            <button class="btn btn-success w-100 mt-3" onclick="submitCheckout()">Complete Order</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Invoices -->
+    <section id="page-invoices" class="page d-none">
+      <h3 class="mb-4">Invoices</h3>
+      <div id="invoicesTable" class="table-responsive"></div>
+    </section>
+
+    <!-- Settings -->
+    <section id="page-settings" class="page d-none">
+      <h3 class="mb-4">Settings</h3>
+      <div class="card p-4" style="max-width: 600px;">
+        <div class="mb-3">
+          <label class="form-label">Company Name</label>
+          <input id="setCompanyName" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Company Email</label>
+          <input id="setCompanyEmail" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Company Phone</label>
+          <input id="setCompanyPhone" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Company Discount (%)</label>
+          <input id="setDiscount" type="number" class="form-control" step="0.01">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Default Delivery Fee</label>
+          <input id="setDelivery" type="number" class="form-control" step="0.01">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Currency</label>
+          <input id="setCurrency" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Invoice Prefix</label>
+          <input id="setPrefix" class="form-control">
+        </div>
+        <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============ MODAL ============ -->
+<div class="modal fade" id="itemModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle">Add Item</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="modalId">
+        <input type="hidden" id="modalCategory">
+        <div class="mb-2">
+          <label class="form-label">Name *</label>
+          <input id="modalName" class="form-control">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Price *</label>
+          <input id="modalPrice" type="number" class="form-control" step="0.01">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Stock Quantity *</label>
+          <input id="modalStock" type="number" class="form-control" value="0">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Description</label>
+          <textarea id="modalDesc" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" onclick="saveItem()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ INVOICE LINK MODAL ============ -->
+<div class="modal fade" id="linkModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Invoice Created</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>Share this link with the customer:</p>
+        <div class="input-group">
+          <input id="invoiceLink" class="form-control" readonly>
+          <button class="btn btn-outline-secondary" onclick="copyInvoiceLink()">Copy</button>
+        </div>
+        <a id="openInvoiceLink" class="btn btn-link mt-2 px-0" target="_blank">Open invoice</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/supabase.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
