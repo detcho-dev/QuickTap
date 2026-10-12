@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/invoice/INV-:id*", "destination": "/invoice/invoice.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
