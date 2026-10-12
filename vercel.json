@@ -1,9 +1,8 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "routes": [
-    { "src": "/invoice/INV-[^/]+", "dest": "/invoice/invoice.html" },
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/invoice/INV-:id*", "destination": "/invoice/invoice.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
