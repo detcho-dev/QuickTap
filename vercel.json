@@ -1,13 +1,9 @@
 {
-  "rewrites": [
-    { "source": "/invoice/INV-:rest*", "destination": "/invoice/view.html" },
-
-    { "source": "/invoice/:path*", "destination": "/invoice/:path*" },
-
-    { "source": "/((?!invoice/).*)", "destination": "/index.html" },
-
-    { "source": "/(.*)", "destination": "/" }
-  ],
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "routes": [
+    { "src": "/invoice/INV-[^/]+", "dest": "/invoice/invoice.html" },
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ]
 }
