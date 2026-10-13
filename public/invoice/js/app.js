@@ -161,9 +161,9 @@ async function loadDashboard() {
   document.getElementById('statOffers').textContent = state.offers.length;
   document.getElementById('statInvoices').textContent = state.invoices.length;
 
-  const revenue = state.invoices.reduce((s, inv) => s + Number(inv.total || 0), 0);
-  document.getElementById('statRevenue').textContent =
-    (state.settings?.currency || 'EGP') + ' ' + revenue.toFixed(2);
+  const totalProfit = state.invoices.reduce((s, inv) => s + Number(inv.net_profit || 0), 0);
+document.getElementById('statProfit').textContent =
+  (state.settings?.currency || 'USD') + ' ' + totalProfit.toFixed(2);
 
   // recent 5
   const recent = state.invoices.slice(0, 5);
@@ -306,6 +306,7 @@ function fillModal(item) {
   document.getElementById('modalId').value = item?.id || '';
   document.getElementById('modalName').value = item?.name || '';
   document.getElementById('modalPrice').value = item?.price ?? '';
+  document.getElementById('modalCost').value = item?.cost_price ?? 0;
   document.getElementById('modalStock').value = item?.stock_quantity ?? 0;
   document.getElementById('modalDesc').value = item?.description || '';
 }
@@ -316,6 +317,7 @@ async function saveItem() {
   const payload = {
     name: document.getElementById('modalName').value.trim(),
     price: parseFloat(document.getElementById('modalPrice').value) || 0,
+    cost_price: parseFloat(document.getElementById('modalCost').value) || 0,
     stock_quantity: parseInt(document.getElementById('modalStock').value) || 0,
     description: document.getElementById('modalDesc').value.trim(),
     category
@@ -340,7 +342,6 @@ async function saveItem() {
     alert('Save failed: ' + e.message);
   }
 }
-
 async function deleteItem(id) {
   if (!confirm('Delete this item?')) return;
   try {
@@ -406,6 +407,7 @@ function addCheckoutItem() {
       product_id: id,
       name: prod.name,
       price: Number(prod.price),
+      cost_price: Number(prod.cost_price || 0),  // ← جديد
       quantity: qty,
       category: prod.category
     });
@@ -446,22 +448,37 @@ function renderCart() {
 function recalcTotals() {
   const subtotal = state.cart.reduce((s, c) => s + c.price * c.quantity, 0);
   const isCompany = document.getElementById('isCompany').checked;
-  const pct = isCompany ? Number(state.settings?.company_discount_percent || 0) : 0;
-  const discount = subtotal * (pct / 100);
+  const companyPct = isCompany ? Number(state.settings?.company_discount_percent || 0) : 0;
+  const companyDisc = subtotal * (companyPct / 100);
+
+  const manualPct = parseFloat(document.getElementById('manualDiscount').value) || 0;
+  // الخصم اليدوي بيتحسب على المتبقي بعد خصم الشركة
+  const afterCompany = subtotal - companyDisc;
+  const manualDisc = afterCompany * (manualPct / 100);
+
   const delivery = parseFloat(document.getElementById('deliveryFee').value) || 0;
-  const total = subtotal - discount + delivery;
+  const total = subtotal - companyDisc - manualDisc + delivery;
 
   document.getElementById('sumSubtotal').textContent = money(subtotal);
   document.getElementById('sumDelivery').textContent = money(delivery);
   document.getElementById('sumTotal').textContent = money(total);
 
-  const row = document.getElementById('discountRow');
-  if (discount > 0) {
-    row.classList.remove('d-none');
-    document.getElementById('discountPercent').textContent = pct;
-    document.getElementById('sumDiscount').textContent = money(discount);
+  const cRow = document.getElementById('discountRow');
+  if (companyDisc > 0) {
+    cRow.classList.remove('d-none');
+    document.getElementById('discountPercent').textContent = companyPct;
+    document.getElementById('sumDiscount').textContent = money(companyDisc);
   } else {
-    row.classList.add('d-none');
+    cRow.classList.add('d-none');
+  }
+
+  const mRow = document.getElementById('manualDiscountRow');
+  if (manualDisc > 0) {
+    mRow.classList.remove('d-none');
+    document.getElementById('manualDiscountPercent').textContent = manualPct;
+    document.getElementById('sumManualDiscount').textContent = money(manualDisc);
+  } else {
+    mRow.classList.add('d-none');
   }
 }
 
@@ -472,11 +489,23 @@ async function submitCheckout() {
   if (!customer_name) { alert('Customer name is required.'); return; }
 
   const subtotal = state.cart.reduce((s, c) => s + c.price * c.quantity, 0);
+  const totalCost = state.cart.reduce((s, c) => s + (c.cost_price || 0) * c.quantity, 0);
+
   const is_company = document.getElementById('isCompany').checked;
-  const pct = is_company ? Number(state.settings?.company_discount_percent || 0) : 0;
-  const discount_amt = subtotal * (pct / 100);
+  const companyPct = is_company ? Number(state.settings?.company_discount_percent || 0) : 0;
+  const companyDisc = subtotal * (companyPct / 100);
+
+  const manualPct = parseFloat(document.getElementById('manualDiscount').value) || 0;
+  const afterCompany = subtotal - companyDisc;
+  const manualDisc = afterCompany * (manualPct / 100);
+
   const delivery = parseFloat(document.getElementById('deliveryFee').value) || 0;
-  const total = subtotal - discount_amt + delivery;
+  const total = subtotal - companyDisc - manualDisc + delivery;
+
+  // صافي الربح = (الإيراد من المنتجات بعد الخصومات) - تكلفة البضاعة
+  // ملاحظة: التوصيل مش بيدخل في الربح لأنه مش إيراد من البضاعة
+  const revenueFromProducts = subtotal - companyDisc - manualDisc;
+  const net_profit = revenueFromProducts - totalCost;
 
   const payload = {
     customer_name,
@@ -485,10 +514,14 @@ async function submitCheckout() {
     items: state.cart,
     subtotal,
     is_company,
-    company_discount_percent: pct,
-    company_discount_amount: discount_amt,
+    company_discount_percent: companyPct,
+    company_discount_amount: companyDisc,
+    manual_discount_percent: manualPct,
+    manual_discount_amount: manualDisc,
     delivery_fee: delivery,
     total,
+    total_cost: totalCost,
+    net_profit: net_profit,
     status: 'completed'
   };
 
@@ -498,7 +531,6 @@ async function submitCheckout() {
     });
     const invoice = Array.isArray(created) ? created[0] : created;
 
-    // decrement stock
     for (const item of state.cart) {
       await supabaseClient.rpc('decrement_stock', {
         p_product_id: item.product_id,
@@ -506,22 +538,22 @@ async function submitCheckout() {
       });
     }
 
-    // show link modal
-    const link = new URL(`invoice/invoice.html?inv=${encodeURIComponent(invoice.invoice_number)}`, location.href).href;
+    const link = `${location.origin}/invoice/${invoice.invoice_number}`;
     document.getElementById('invoiceLink').value = link;
     document.getElementById('openInvoiceLink').href = link;
     new bootstrap.Modal(document.getElementById('linkModal')).show();
 
-    // reset cart
+    // reset
     state.cart = [];
     renderCart();
-    recalcTotals();
     document.getElementById('custName').value = '';
     document.getElementById('custEmail').value = '';
     document.getElementById('custPhone').value = '';
     document.getElementById('isCompany').checked = false;
+    document.getElementById('manualDiscount').value = 0;
+    document.getElementById('deliveryFee').value = state.settings?.default_delivery_fee || 0;
+    recalcTotals();
 
-    // refresh products to reflect new stock
     await loadProducts();
     await loadOffers();
   } catch (e) {
@@ -596,6 +628,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('logoutBtn').addEventListener('click', logout);
+   document.getElementById('manualDiscount').addEventListener('input', recalcTotals);
 
   document.getElementById('loginBtn').addEventListener('click', () => {
     const email = document.getElementById('loginEmail').value.trim();
