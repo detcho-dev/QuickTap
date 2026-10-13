@@ -538,7 +538,7 @@ async function submitCheckout() {
       });
     }
 
-    const link = `${location.origin}/invoice/${invoice.invoice_number}`;
+    const link = `${location.origin}/invoice/invoice.html?inv=${invoice.invoice_number}`;
     document.getElementById('invoiceLink').value = link;
     document.getElementById('openInvoiceLink').href = link;
     new bootstrap.Modal(document.getElementById('linkModal')).show();
@@ -569,7 +569,7 @@ function copyInvoiceLink() {
 }
 
 function copyLink(invNumber) {
-  const link = new URL(`/invoice/invoice.html?inv=${encodeURIComponent(invNumber)}`, location.href).href;
+  const link = `${location.origin}/invoice/invoice.html?inv=${encodeURIComponent(invNumber)}`;
   navigator.clipboard.writeText(link).then(() => alert('Link copied!'));
 }
 
