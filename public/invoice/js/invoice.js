@@ -82,6 +82,11 @@
             <span>Company discount (${inv.company_discount_percent}%)</span>
             <span>-${money(inv.company_discount_amount)}</span>
           </div>` : ''}
+          ${inv.manual_discount_amount > 0 ? `
+  <div class="d-flex justify-content-between text-warning">
+    <span>Discount (${inv.manual_discount_percent}%)</span>
+    <span>-${money(inv.manual_discount_amount)}</span>
+  </div>` : ''}
         <div class="d-flex justify-content-between"><span>Delivery</span><span>${money(inv.delivery_fee)}</span></div>
         <hr class="my-2">
         <div class="d-flex justify-content-between fw-bold"><span>Total</span><span>${money(inv.total)}</span></div>
