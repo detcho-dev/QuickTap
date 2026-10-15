@@ -8,6 +8,7 @@ import {
   FaLinkedin,
   FaGithub,
   FaDiscord,
+  FaEnvelope,        // ← جديد
 } from "react-icons/fa";
 import { SiThreads } from "react-icons/si";
 import { Globe } from "lucide-react";
@@ -23,6 +24,11 @@ export default function ProfileCard({ data, type }) {
       key: "phone",
       url: data.phone && `tel:${data.phone}`,
       icon: <FaPhoneAlt />,
+    },
+    {
+      key: "email",
+      url: data.email && `mailto:${data.email}`,
+      icon: <FaEnvelope />,
     },
     {
       key: "instagram",
