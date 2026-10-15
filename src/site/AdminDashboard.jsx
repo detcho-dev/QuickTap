@@ -9,6 +9,7 @@ const EMPTY = {
   name: "",
   bio: "",
   avatar: "",
+  email: "",          // ← جديد
   whatsapp: "",
   phone: "",
   instagram: "",
@@ -18,8 +19,8 @@ const EMPTY = {
   linkedin: "",
   github: "",
   discord: "",
-  tiktok: "",        
-  website: "",       
+  tiktok: "",
+  website: "",
 };
 
 export default function AdminDashboard() {
@@ -209,6 +210,16 @@ export default function AdminDashboard() {
               placeholder="+201001234567"
               value={form.phone}
               onChange={(e) => update("phone", e.target.value)}
+            />
+          </div>
+                    <div className="admin-field">
+            <label>Email</label>
+            <input
+              className="admin-input"
+              type="email"
+              placeholder="name@example.com"
+              value={form.email}
+              onChange={(e) => update("email", e.target.value)}
             />
           </div>
           <div className="admin-field">
