@@ -16,10 +16,23 @@ import { Globe } from "lucide-react";
 export default function ProfileCard({ data, type }) {
   const links = [
     {
-      key: "whatsapp",
-      url: data.whatsapp && `https://wa.me/${data.whatsapp.replace(/\D/g, "")}`,
-      icon: <FaWhatsapp />,
-    },
+  key: "whatsapp",
+  url: (() => {
+    if (!data.whatsapp) return null;
+    const v = data.whatsapp.trim();
+
+    // 1. لينك كامل → استخدمه زي ما هو
+    if (v.startsWith("http")) return v;
+
+    // 2. رقم (8 أرقام على الأقل) → wa.me/رقم
+    const digits = v.replace(/\D/g, "");
+    if (digits.length >= 8) return `https://wa.me/${digits}`;
+
+    // 3. username → wa.me/username
+    return `https://wa.me/${v}`;
+  })(),
+  icon: <FaWhatsapp />,
+},
     {
       key: "phone",
       url: data.phone && `tel:${data.phone}`,
