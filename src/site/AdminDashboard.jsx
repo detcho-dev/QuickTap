@@ -9,9 +9,10 @@ const EMPTY = {
   name: "",
   bio: "",
   avatar: "",
-  email: "",          // ← جديد
+    email: "",
   whatsapp: "",
   phone: "",
+  phone2: "",          // ← جديد
   instagram: "",
   facebook: "",
   twitter: "",
@@ -21,6 +22,12 @@ const EMPTY = {
   discord: "",
   tiktok: "",
   website: "",
+  telegram: "",        // ← جديد
+  youtube: "",         // ← جديد
+  maps: "",            // ← جديد
+  instapay: "",        // ← جديد
+  custom_url: "",      // ← جديد
+  custom_label: "",    // ← جديد
 };
 
 export default function AdminDashboard() {
@@ -204,6 +211,16 @@ export default function AdminDashboard() {
             />
           </div>
           <div className="admin-field">
+    <label>Telegram</label>
+    <input
+      className="admin-input"
+      placeholder="username"
+      value={form.telegram}
+      onChange={(e) => update("telegram", e.target.value)}
+    />
+    <small>Without @</small>
+  </div>
+          <div className="admin-field">
             <label>Phone</label>
             <input
               className="admin-input"
@@ -212,6 +229,16 @@ export default function AdminDashboard() {
               onChange={(e) => update("phone", e.target.value)}
             />
           </div>
+          <div className="admin-field">
+    <label>Phone 2</label>
+    <input
+      className="admin-input"
+      type="tel"
+      placeholder="+201001234567"
+      value={form.phone2}
+      onChange={(e) => update("phone2", e.target.value)}
+    />
+  </div>
                     <div className="admin-field">
             <label>Email</label>
             <input
@@ -305,6 +332,71 @@ export default function AdminDashboard() {
               onChange={(e) => update("website", e.target.value)}
             />
           </div>
+          <div className="admin-field">
+    <label>InstaPay</label>
+    <input
+      className="admin-input"
+      placeholder="username or link"
+      value={form.instapay}
+      onChange={(e) => update("instapay", e.target.value)}
+    />
+    <small>Username or full link</small>
+  </div>
+          <div className="admin-field">
+    <label>Google Maps</label>
+    <input
+      className="admin-input"
+      placeholder="https://maps.google.com/..."
+      value={form.maps}
+      onChange={(e) => update("maps", e.target.value)}
+    />
+    <small>Full share link</small>
+  </div>
+          <div className="admin-field">
+  <label>YouTube</label>
+  <input
+    className="admin-input"
+    placeholder="@channel or link"
+    value={form.youtube}
+    onChange={(e) => update("youtube", e.target.value)}
+  />
+</div>
+          <h3 className="admin-section-title" style={{ marginTop: 24 }}>
+  Other
+</h3>
+
+<div className="admin-grid-2">
+  <div className="admin-field">
+    <label>Website</label>
+    <input
+      className="admin-input"
+      placeholder="https://example.com"
+      value={form.website}
+      onChange={(e) => update("website", e.target.value)}
+    />
+  </div>
+
+  <div className="admin-field">
+    <label>Custom Link — Label</label>
+    <input
+      className="admin-input"
+      placeholder="e.g. My Portfolio"
+      value={form.custom_label}
+      onChange={(e) => update("custom_label", e.target.value)}
+    />
+    <small>Text shown on the button tooltip</small>
+  </div>
+
+  <div className="admin-field admin-full">
+    <label>Custom Link — URL</label>
+    <input
+      className="admin-input"
+      placeholder="https://example.com/anything"
+      value={form.custom_url}
+      onChange={(e) => update("custom_url", e.target.value)}
+    />
+  </div>
+</div>
         </div>
 
         <div className="admin-actions">
