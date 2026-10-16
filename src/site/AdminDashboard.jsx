@@ -9,10 +9,10 @@ const EMPTY = {
   name: "",
   bio: "",
   avatar: "",
-    email: "",
+  email: "",
   whatsapp: "",
   phone: "",
-  phone2: "",          // ← جديد
+  phone2: "",
   instagram: "",
   facebook: "",
   twitter: "",
@@ -22,19 +22,19 @@ const EMPTY = {
   discord: "",
   tiktok: "",
   website: "",
-  telegram: "",        // ← جديد
-  youtube: "",         // ← جديد
-  maps: "",            // ← جديد
-  instapay: "",        // ← جديد
-  custom_url: "",      // ← جديد
-  custom_label: "",    // ← جديد
+  telegram: "",
+  youtube: "",
+  maps: "",
+  instapay: "",
+  custom_url: "",
+  custom_label: "",
 };
 
 export default function AdminDashboard() {
   const [form, setForm] = useState(EMPTY);
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(null); // { type: 'ok'|'err', text }
+  const [message, setMessage] = useState(null);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
@@ -65,7 +65,6 @@ export default function AdminDashboard() {
 
     setLoading(true);
 
-    // نشيل الحقول الفاضية عشان ميحصلش تعارض
     const payload = Object.fromEntries(
       Object.entries(form).filter(([, v]) => v !== "" && v !== null),
     );
@@ -139,6 +138,7 @@ export default function AdminDashboard() {
           {form.id ? "Edit Profile" : "Add New Profile"}
         </h2>
 
+        {/* ===== Basic Info ===== */}
         <div className="admin-grid-2">
           <div className="admin-field">
             <label>ID *</label>
@@ -196,50 +196,13 @@ export default function AdminDashboard() {
           </div>
         </div>
 
+        {/* ===== Contact ===== */}
         <h3 className="admin-section-title" style={{ marginTop: 24 }}>
-          Links
+          Contact
         </h3>
 
         <div className="admin-grid-3">
           <div className="admin-field">
-            <label>WhatsApp</label>
-            <input
-              className="admin-input"
-              placeholder="201001234567"
-              value={form.whatsapp}
-              onChange={(e) => update("whatsapp", e.target.value)}
-            />
-          </div>
-          <div className="admin-field">
-    <label>Telegram</label>
-    <input
-      className="admin-input"
-      placeholder="username"
-      value={form.telegram}
-      onChange={(e) => update("telegram", e.target.value)}
-    />
-    <small>Without @</small>
-  </div>
-          <div className="admin-field">
-            <label>Phone</label>
-            <input
-              className="admin-input"
-              placeholder="+201001234567"
-              value={form.phone}
-              onChange={(e) => update("phone", e.target.value)}
-            />
-          </div>
-          <div className="admin-field">
-    <label>Phone 2</label>
-    <input
-      className="admin-input"
-      type="tel"
-      placeholder="+201001234567"
-      value={form.phone2}
-      onChange={(e) => update("phone2", e.target.value)}
-    />
-  </div>
-                    <div className="admin-field">
             <label>Email</label>
             <input
               className="admin-input"
@@ -249,6 +212,80 @@ export default function AdminDashboard() {
               onChange={(e) => update("email", e.target.value)}
             />
           </div>
+
+          <div className="admin-field">
+            <label>Phone</label>
+            <input
+              className="admin-input"
+              type="tel"
+              placeholder="+201001234567"
+              value={form.phone}
+              onChange={(e) => update("phone", e.target.value)}
+            />
+          </div>
+
+          <div className="admin-field">
+            <label>Phone 2</label>
+            <input
+              className="admin-input"
+              type="tel"
+              placeholder="+201001234567"
+              value={form.phone2}
+              onChange={(e) => update("phone2", e.target.value)}
+            />
+          </div>
+
+          <div className="admin-field">
+            <label>WhatsApp</label>
+            <input
+              className="admin-input"
+              placeholder="201001234567 or username"
+              value={form.whatsapp}
+              onChange={(e) => update("whatsapp", e.target.value)}
+            />
+            <small>Number or username</small>
+          </div>
+
+          <div className="admin-field">
+            <label>Telegram</label>
+            <input
+              className="admin-input"
+              placeholder="username"
+              value={form.telegram}
+              onChange={(e) => update("telegram", e.target.value)}
+            />
+            <small>Without @</small>
+          </div>
+
+          <div className="admin-field">
+            <label>InstaPay</label>
+            <input
+              className="admin-input"
+              placeholder="username or link"
+              value={form.instapay}
+              onChange={(e) => update("instapay", e.target.value)}
+            />
+            <small>Username or full link</small>
+          </div>
+
+          <div className="admin-field">
+            <label>Google Maps</label>
+            <input
+              className="admin-input"
+              placeholder="https://maps.google.com/..."
+              value={form.maps}
+              onChange={(e) => update("maps", e.target.value)}
+            />
+            <small>Full share link</small>
+          </div>
+        </div>
+
+        {/* ===== Social Links ===== */}
+        <h3 className="admin-section-title" style={{ marginTop: 24 }}>
+          Social Links
+        </h3>
+
+        <div className="admin-grid-3">
           <div className="admin-field">
             <label>Instagram</label>
             <input
@@ -258,62 +295,8 @@ export default function AdminDashboard() {
               onChange={(e) => update("instagram", e.target.value)}
             />
           </div>
-          <div className="admin-field">
-            <label>Facebook</label>
-            <input
-              className="admin-input"
-              placeholder="username"
-              value={form.facebook}
-              onChange={(e) => update("facebook", e.target.value)}
-            />
-          </div>
-          <div className="admin-field">
-            <label>Twitter / X</label>
-            <input
-              className="admin-input"
-              placeholder="username"
-              value={form.twitter}
-              onChange={(e) => update("twitter", e.target.value)}
-            />
-          </div>
-          <div className="admin-field">
-            <label>Threads</label>
-            <input
-              className="admin-input"
-              placeholder="username"
-              value={form.threads}
-              onChange={(e) => update("threads", e.target.value)}
-            />
-          </div>
-          <div className="admin-field">
-            <label>LinkedIn</label>
-            <input
-              className="admin-input"
-              placeholder="username"
-              value={form.linkedin}
-              onChange={(e) => update("linkedin", e.target.value)}
-            />
-          </div>
-          <div className="admin-field">
-            <label>GitHub</label>
-            <input
-              className="admin-input"
-              placeholder="username"
-              value={form.github}
-              onChange={(e) => update("github", e.target.value)}
-            />
-          </div>
-          <div className="admin-field">
-            <label>Discord</label>
-            <input
-              className="admin-input"
-              placeholder="https://discord.gg/..."
-              value={form.discord}
-              onChange={(e) => update("discord", e.target.value)}
-            />
-          </div>
 
-                    <div className="admin-field">
+          <div className="admin-field">
             <label>TikTok</label>
             <input
               className="admin-input"
@@ -324,6 +307,83 @@ export default function AdminDashboard() {
           </div>
 
           <div className="admin-field">
+            <label>Facebook</label>
+            <input
+              className="admin-input"
+              placeholder="username"
+              value={form.facebook}
+              onChange={(e) => update("facebook", e.target.value)}
+            />
+          </div>
+
+          <div className="admin-field">
+            <label>Twitter / X</label>
+            <input
+              className="admin-input"
+              placeholder="username"
+              value={form.twitter}
+              onChange={(e) => update("twitter", e.target.value)}
+            />
+          </div>
+
+          <div className="admin-field">
+            <label>Threads</label>
+            <input
+              className="admin-input"
+              placeholder="username"
+              value={form.threads}
+              onChange={(e) => update("threads", e.target.value)}
+            />
+          </div>
+
+          <div className="admin-field">
+            <label>LinkedIn</label>
+            <input
+              className="admin-input"
+              placeholder="username"
+              value={form.linkedin}
+              onChange={(e) => update("linkedin", e.target.value)}
+            />
+          </div>
+
+          <div className="admin-field">
+            <label>GitHub</label>
+            <input
+              className="admin-input"
+              placeholder="username"
+              value={form.github}
+              onChange={(e) => update("github", e.target.value)}
+            />
+          </div>
+
+          <div className="admin-field">
+            <label>Discord</label>
+            <input
+              className="admin-input"
+              placeholder="https://discord.gg/..."
+              value={form.discord}
+              onChange={(e) => update("discord", e.target.value)}
+            />
+          </div>
+
+          <div className="admin-field">
+            <label>YouTube</label>
+            <input
+              className="admin-input"
+              placeholder="@channel or link"
+              value={form.youtube}
+              onChange={(e) => update("youtube", e.target.value)}
+            />
+          </div>
+        </div>
+
+        {/* ===== Other ===== */}
+        <h3 className="admin-section-title" style={{ marginTop: 24 }}>
+          Other
+        </h3>
+
+        <div className="admin-grid-2">
+          <div className="admin-field">
             <label>Website</label>
             <input
               className="admin-input"
@@ -332,71 +392,27 @@ export default function AdminDashboard() {
               onChange={(e) => update("website", e.target.value)}
             />
           </div>
-          <div className="admin-field">
-    <label>InstaPay</label>
-    <input
-      className="admin-input"
-      placeholder="username or link"
-      value={form.instapay}
-      onChange={(e) => update("instapay", e.target.value)}
-    />
-    <small>Username or full link</small>
-  </div>
-          <div className="admin-field">
-    <label>Google Maps</label>
-    <input
-      className="admin-input"
-      placeholder="https://maps.google.com/..."
-      value={form.maps}
-      onChange={(e) => update("maps", e.target.value)}
-    />
-    <small>Full share link</small>
-  </div>
-          <div className="admin-field">
-  <label>YouTube</label>
-  <input
-    className="admin-input"
-    placeholder="@channel or link"
-    value={form.youtube}
-    onChange={(e) => update("youtube", e.target.value)}
-  />
-</div>
-          <h3 className="admin-section-title" style={{ marginTop: 24 }}>
-  Other
-</h3>
 
-<div className="admin-grid-2">
-  <div className="admin-field">
-    <label>Website</label>
-    <input
-      className="admin-input"
-      placeholder="https://example.com"
-      value={form.website}
-      onChange={(e) => update("website", e.target.value)}
-    />
-  </div>
+          <div className="admin-field">
+            <label>Custom Link — Label</label>
+            <input
+              className="admin-input"
+              placeholder="e.g. My Portfolio"
+              value={form.custom_label}
+              onChange={(e) => update("custom_label", e.target.value)}
+            />
+            <small>Text shown on the button tooltip</small>
+          </div>
 
-  <div className="admin-field">
-    <label>Custom Link — Label</label>
-    <input
-      className="admin-input"
-      placeholder="e.g. My Portfolio"
-      value={form.custom_label}
-      onChange={(e) => update("custom_label", e.target.value)}
-    />
-    <small>Text shown on the button tooltip</small>
-  </div>
-
-  <div className="admin-field admin-full">
-    <label>Custom Link — URL</label>
-    <input
-      className="admin-input"
-      placeholder="https://example.com/anything"
-      value={form.custom_url}
-      onChange={(e) => update("custom_url", e.target.value)}
-    />
-  </div>
-</div>
+          <div className="admin-field admin-full">
+            <label>Custom Link — URL</label>
+            <input
+              className="admin-input"
+              placeholder="https://example.com/anything"
+              value={form.custom_url}
+              onChange={(e) => update("custom_url", e.target.value)}
+            />
+          </div>
         </div>
 
         <div className="admin-actions">
