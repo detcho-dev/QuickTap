@@ -1,6 +1,7 @@
 import {
   FaWhatsapp,
   FaPhoneAlt,
+  FaEnvelope,
   FaInstagram,
   FaFacebook,
   FaTwitter,
@@ -8,41 +9,47 @@ import {
   FaLinkedin,
   FaGithub,
   FaDiscord,
-  FaEnvelope,        // ← جديد
+  FaTelegram,       // ← جديد
+  FaYoutube,        // ← جديد
+  FaMapMarkerAlt,   // ← جديد
 } from "react-icons/fa";
 import { SiThreads } from "react-icons/si";
-import { Globe } from "lucide-react";
+import { Globe, Link2 } from "lucide-react";  // ← Link2 جديد
 
 export default function ProfileCard({ data, type }) {
   const links = [
-    {
+  {
   key: "whatsapp",
   url: (() => {
     if (!data.whatsapp) return null;
     const v = data.whatsapp.trim();
-
-    // 1. لينك كامل → استخدمه زي ما هو
     if (v.startsWith("http")) return v;
-
-    // 2. رقم (8 أرقام على الأقل) → wa.me/رقم
     const digits = v.replace(/\D/g, "");
     if (digits.length >= 8) return `https://wa.me/${digits}`;
-
-    // 3. username → wa.me/username
     return `https://wa.me/${v}`;
   })(),
   icon: <FaWhatsapp />,
 },
     {
-      key: "phone",
-      url: data.phone && `tel:${data.phone}`,
-      icon: <FaPhoneAlt />,
-    },
-    {
-      key: "email",
-      url: data.email && `mailto:${data.email}`,
-      icon: <FaEnvelope />,
-    },
+  key: "phone2",
+  url: data.phone2 && `tel:${data.phone2}`,
+  icon: <FaPhoneAlt />,
+  label: "phone 2",
+},
+{
+  key: "email",
+  url: data.email && `mailto:${data.email}`,
+  icon: <FaEnvelope />,
+},
+{
+  key: "telegram",
+  url:
+    data.telegram &&
+    (data.telegram.startsWith("http")
+      ? data.telegram
+      : `https://t.me/${data.telegram.replace(/^@/, "")}`),
+  icon: <FaTelegram />,
+},
     {
       key: "instagram",
       url:
@@ -108,6 +115,17 @@ export default function ProfileCard({ data, type }) {
     },
     { key: "discord", url: data.discord, icon: <FaDiscord /> },
     {
+  key: "youtube",
+  url:
+    data.youtube &&
+    (data.youtube.startsWith("http")
+      ? data.youtube
+      : data.youtube.startsWith("@")
+        ? `https://youtube.com/${data.youtube}`
+        : `https://youtube.com/@${data.youtube}`),
+  icon: <FaYoutube />,
+},
+    {
       key: "website",
       url:
         data.website &&
@@ -116,6 +134,27 @@ export default function ProfileCard({ data, type }) {
           : `https://${data.website}`),
       icon: <Globe />,
     },
+    {
+  key: "maps",
+  url: data.maps,
+  icon: <FaMapMarkerAlt />,
+  label: "Google Maps",
+},
+{
+  key: "instapay",
+  url: data.instapay,
+  icon: <InstaPayIcon />,
+  label: "InstaPay",
+},
+{
+  key: data.custom_label || "custom",
+  url:
+    data.custom_url &&
+    (data.custom_url.startsWith("http")
+      ? data.custom_url
+      : `https://${data.custom_url}`),
+  icon: <Link2 />,
+},
   ].filter((l) => l.url);
 
   return (
@@ -161,4 +200,16 @@ export default function ProfileCard({ data, type }) {
       )}
     </div>
   );
+  function InstaPayIcon({ className = "h-5 w-5" }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08s5.97 1.09 6 3.08c-1.29 1.94-3.5 3.22-6 3.22z" />
+    </svg>
+  );
+}
 }
