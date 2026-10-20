@@ -30,12 +30,17 @@ export default function ProfileCard({ data, type }) {
   })(),
   icon: <FaWhatsapp />,
 },
+        {
+      key: "phone",
+      url: data.phone && `tel:${data.phone}`,
+      icon: <FaPhoneAlt />,
+    },
     {
-  key: "phone2",
-  url: data.phone2 && `tel:${data.phone2}`,
-  icon: <FaPhoneAlt />,
-  label: "phone 2",
-},
+      key: "phone2",
+      url: data.phone2 && `tel:${data.phone2}`,
+      icon: <FaPhoneAlt />, // ❌ نفس الأيقونة
+      label: "phone 2",
+    },
 {
   key: "email",
   url: data.email && `mailto:${data.email}`,
