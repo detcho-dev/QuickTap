@@ -22,6 +22,7 @@ const EMPTY = {
   discord: "",
   tiktok: "",
   website: "",
+  menu_url: "",
   telegram: "",
   youtube: "",
   maps: "",
@@ -391,6 +392,16 @@ export default function AdminDashboard() {
               value={form.website}
               onChange={(e) => update("website", e.target.value)}
             />
+          </div>
+          <div className="admin-field">
+            <label>Menu URL (زرار المينيو)</label>
+            <input
+              className="admin-input"
+              placeholder="https://linktr.ee/username"
+              value={form.menu_url}
+              onChange={(e) => update("menu_url", e.target.value)}
+            />
+            <small>لو حابب تضيف زرار مينيو يفتح صفحة تانية</small>
           </div>
 
           <div className="admin-field">
