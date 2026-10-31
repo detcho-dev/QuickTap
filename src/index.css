@@ -665,6 +665,28 @@ textarea.admin-input {
   -webkit-text-fill-color: transparent;
 }
 
+  /* زرار بياخد مساحة 3 زراير (عرض كامل) ويكتب فيه اسم */
+.social-btn-wide {
+  width: 100%; 
+  flex: 1 1 100%;
+  max-width: 100%;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* تظبيط حجم لوجو انستاباي */
+.instapay-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: white; /* خلفية بيضا عشان اللوجو البنفسجي يبان */
+  padding: 2px;
+}
+
 @media (max-width: 480px) {
   .social-btn {
     width: 50px;
