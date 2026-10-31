@@ -11,13 +11,20 @@ import {
   FaDiscord,
   FaTelegram,       // ← جديد
   FaYoutube,        // ← جديد
-  FaMapMarkerAlt,   // ← جديد
+  FaMapMarkerAlt, 
+  FaBookOpen,// ← جديد
 } from "react-icons/fa";
 import { SiThreads } from "react-icons/si";
 import { Globe, Link2 } from "lucide-react";  // ← Link2 جديد
 
 export default function ProfileCard({ data, type }) {
   const links = [
+     {
+      key: "menu",
+      url: data.menu_url,
+      icon: <FaBars />,
+      label: "Menu",
+    },
   {
   key: "whatsapp",
   url: (() => {
@@ -146,20 +153,22 @@ export default function ProfileCard({ data, type }) {
   label: "Google Maps",
 },
 {
-  key: "instapay",
-  url: data.instapay,
-  icon: <InstaPayIcon />,
-  label: "InstaPay",
-},
+      key: "instapay",
+      url: data.instapay,
+      icon: <img src="https://res.cloudinary.com/dqyxzsnyq/image/upload/v1793452548/instapay-rHt5wPTI_a8xbc3.png" alt="InstaPay" className="instapay-icon" />,
+      label: "InstaPay",
+    },
 {
-  key: data.custom_label || "custom",
-  url:
-    data.custom_url &&
-    (data.custom_url.startsWith("http")
-      ? data.custom_url
-      : `https://${data.custom_url}`),
-  icon: <Link2 />,
-},
+      key: data.custom_label || "custom",
+      url:
+        data.custom_url &&
+        (data.custom_url.startsWith("http")
+          ? data.custom_url
+          : `https://${data.custom_url}`),
+      icon: <Link2 className="w-5 h-5" />,
+      label: data.custom_label || "Custom Link", // الاسم اللي هيظهر
+      isWide: true, // علامة عشان نعرف إنه بياخد مساحة كبيرة
+    },
   ].filter((l) => l.url);
 
   return (
@@ -183,7 +192,6 @@ export default function ProfileCard({ data, type }) {
       <h1 className="profile-name">{data.name}</h1>
 
       {data.bio && <p className="profile-bio">{data.bio}</p>}
-
       {links.length > 0 ? (
         <div className="social-grid">
           {links.map((l) => (
@@ -192,11 +200,13 @@ export default function ProfileCard({ data, type }) {
               href={l.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="social-btn"
-              aria-label={l.key}
-              title={l.key}
+              className={`social-btn ${l.isWide ? "social-btn-wide" : ""}`}
+              aria-label={l.label || l.key}
+              title={l.label || l.key}
             >
               {l.icon}
+              {/* لو الزرار واسع، اعرض الاسم اللي جانبه */}
+              {l.isWide && <span>{l.label}</span>}
             </a>
           ))}
         </div>
