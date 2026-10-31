@@ -22,7 +22,7 @@ export default function ProfileCard({ data, type }) {
      {
       key: "menu",
       url: data.menu_url,
-      icon: <FaBars />,
+      icon: <FaBookOpen />,
       label: "Menu",
     },
   {
